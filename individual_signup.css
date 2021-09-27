@@ -127,5 +127,24 @@
     width: 50%;
     position: absolute;
   }
+
+  .btn{
+    background-color: silver;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    display: inline block;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin-top: 4px;
+    width: 150px;
+    font-size: 15px;
+  }
+  
+  .btn:hover{
+    background-color: beige;
+    color: black;
+  }
   
   
