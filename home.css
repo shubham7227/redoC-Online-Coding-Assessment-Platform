@@ -1,7 +1,7 @@
 body{
   margin: 0px;
   padding: 0px;
-  background-color: black;
+  background-color: #212121;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -39,19 +39,6 @@ body{
 .nav_bar img{
   width: 117px;
   height: 55px;
-}
-
-footer{
-  position: absolute;
-  color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: #3c3c3c;
-  bottom: 0;
-  width: 100%;
-  height: 26px;
-  font-size: 24px;
-  padding: 10px;
-  text-align: center;
 }
 
 .typewriter h1{
@@ -122,35 +109,65 @@ footer{
   background-color: beige;
   color: black;
 }
-.blog{
-  border: 2px solid black;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 20px;
-  margin-top: 80px;
-  height: auto;
-  width: 40%;
-  background-color: gray;
-  font-family: "Calibri";
-  font-size: 15px;
-  float: right;  
-}
-.blog h{
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center;
-}
-.blog a{
-  font-style: italic;
-  font-size: 20px;
-  text-decoration: none;
+
+.news{
   color: white;
+  background-image: url(news.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-top: 10rem;
+  margin: 20px;
+  max-width: 35ch;
+  font-family: sans-serif;
+  float: right;
+  border-radius: 1em;
+  overflow: hidden;
+  transition: transform 500ms ease;
 }
 
-.blog a:hover{
-  color: orange;
+.news:hover{
+  transform: scale(1.05);  
+}
+
+.news-content{
+  padding: 1.5em;
+  background: linear-gradient(
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 10% / 1));
+}
+.news-title{
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  position: relative;
+  width: max-content;
+  padding:20px 0 5px 0;
+}
+.news-title::after{
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: blue;
+  left: 0;
+  bottom: 0;
+  transform: scale(0);
+  transform-origin: left;
+  transition: transform 500ms ease;
+}
+
+.news:hover .news-title::after{
+  transform: scaleX(1);
 }
 footer{
-  padding: 10px 0 10px 0;
-  width: 100%;
+  font-size: 20px;
+  margin-left: auto; margin-right: auto;
+  left: 0; right: 0;
+  text-align: center;
+  color:white;
+  background-color: grey;
+  position: fixed;
+  bottom: 0;
+  padding: 5px;
 }
