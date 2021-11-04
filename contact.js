@@ -1,0 +1,1 @@
+document.getElementById("contact").style.backgroundColor = "black";
