@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 body{
   margin: 0px;
   padding: 0px;
   background-color: #212121;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav_bar ul{
@@ -69,45 +70,59 @@ body{
     border-right-color: transparent;
   }
 }
+
+#potd{
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 0;
+  font-size: 1.1em;
+  line-height: 1.5;
+  padding-left: 20px;
+}
+
 .POTD{
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 10px;
-  height: 30%;
+  height: 35%;
   width: 40%;
-  padding: 10px;
   margin: 20px;
-  margin-top: 80px;
-  background-color: gray;
+  margin-top: 20px;
+  color:white;
   font-family: monospace;
   font-size: 15px;
   float: left;
 }
 .POTD a{
   text-align: center;
+  line-height: 2em;
+  padding: 20px;
   font-weight: bold;
   font-size: 2em;
-  color: black;
 }
 
 
 .submit_btn{
-  background-color: orange;
-  border-radius: 5px;
+  background-image: linear-gradient(315deg, #63d475 0%, #324b3c 80%);
+
+  font-family: 'Montserrat', sans-serif;
+  background-size: 200% auto;
+  transition: 0.5s;
+  border: 0px;
+  font-size: 1.2em;
+  border-radius: 10px;
   color: white;
   text-decoration: none;
   text-align: center;
   display: inline block;
   cursor: pointer;
-  padding: 10px 10px;
-  margin-top: 4px;
+  padding: 10px;
+  margin-left: 15px;
 }
 
 .submit_btn:hover{
-  background-color: beige;
-  color: black;
+  background-position: right center;
 }
 
 .news{
@@ -118,7 +133,7 @@ body{
   padding-top: 10rem;
   margin: 20px;
   max-width: 35ch;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   float: right;
   border-radius: 1em;
   overflow: hidden;
@@ -131,6 +146,7 @@ body{
 
 .news-content{
   padding: 1.5em;
+  padding-right: 0;
   background: linear-gradient(
     hsl(0 0% 0% / 0),
     hsl(0 0% 10% / 1));
