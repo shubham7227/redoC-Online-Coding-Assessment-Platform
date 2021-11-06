@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    font-family: "Quattrocento Sans", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     box-sizing: border-box;
   }

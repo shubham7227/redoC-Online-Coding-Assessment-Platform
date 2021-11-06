@@ -80,6 +80,7 @@ body{
 }
 
 .POTD{
+  background-color: black;
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -137,7 +138,7 @@ body{
   float: right;
   border-radius: 1em;
   overflow: hidden;
-  transition: transform 500ms ease;
+  transition: transform 100ms ease;
 }
 
 .news:hover{
