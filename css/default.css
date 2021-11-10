@@ -7,6 +7,10 @@ body{
   box-sizing: border-box;
 }
 
+::placeholder{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
 .nav_bar ul{
   list-style-type: none;
   margin: 0;
