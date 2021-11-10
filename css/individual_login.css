@@ -1,16 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    font-family: "Quattrocento Sans", sans-serif;
-    font-weight: 700;
-    box-sizing: border-box;
-  }
-  
   body {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
   }
-
+  
+  a {
+    color: #62760c;
+  }
+  
+  a:hover {
+    color: orange;
+    text-decoration: none;
+  }
+  
   .login-form {
     margin-top: 3%;
     margin-bottom: 3%;
@@ -22,8 +22,8 @@
     padding: 50px 40px;
     border-radius: 25px;
     margin-left: 35%;
-    margin-right: 6%;
     float: right;
+    margin-right: 6%;
   }
   
   .login-form h1 {
@@ -46,6 +46,12 @@
     height: 25px;
   }
   
+  .show-password {
+    color: #adadad;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
   .bottom-txt {
     font-weight: 400;
     margin-top: 50px;
@@ -56,7 +62,7 @@
     font-weight: 400;
     margin-bottom: 5px;
   }
-
+  
   .backimg img{
     float: left;
     margin: 20px;
@@ -84,14 +90,4 @@
     background-color: beige;
     color: black;
   }
-  
-  a {
-    color: #62760c;
-  }
-  
-  a:hover {
-    color: orange;
-    text-decoration: none;
-  }
-  
   

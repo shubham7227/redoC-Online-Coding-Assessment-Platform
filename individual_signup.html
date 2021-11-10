@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel = "icon" href = "assets/favicon.png"  type = "image/png">
-    <link rel="stylesheet" href="individual_signup.css">
+    <link rel="stylesheet" href = "css/default.css">
+    <link rel="stylesheet" href = "css/individual_signup.css">
 </head>
 <body>
     
-<form class="login-form" action="/student-signup" method="post">
+<form class="login-form" onsubmit = "return checkinfo();" method="post">
     <h1>Sign Up</h1>
     <div class="txtb">
       <input
@@ -20,18 +21,18 @@
         autocomplete="off"
         required
       />
-    </div>
-  
+    </div><br>
+    <p id="fname_error"></p><br>
     <div class="txtb">
       <input
         name="mname"
         type="text"
-        placeholder="Middle Name"
+        placeholder="Middle Name (Optional)"
         id="mname"
         autocomplete="off"
       />
-    </div>
-  
+    </div><br>
+    <p id="mname_error"></p><br>
     <div class="txtb">
       <input
         name="lname"
@@ -41,8 +42,8 @@
         autocomplete="off"
         required
       />
-    </div>
-  
+    </div><br>
+    <p id = "lname_error"></p><br>
     <div class="txtb">
       <input
         name="email"
@@ -62,7 +63,8 @@
         id="password"
         required
       />
-    </div>
+    </div><br>
+    <p id="pass_error"></p><br>
     <div class="txtb">
       <input
         name="cpassword"
@@ -71,12 +73,14 @@
         id="cpassword"
         required
       />
-    </div>
+    </div><br>
+    <p id="cpass_error"></p><br>
     <center>
     <button
       type="submit"
       class="btn"
-    >
+    ><br>
+    <p id="cpass_error"></p><br>
       Create account
     </button>
     </center>
@@ -89,5 +93,6 @@
   <div class = "backimg">
     <img src = "background.jpg">
   </div>
+<script src = "js/signup.js"></script>
 </body>
 </html>

@@ -1,53 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-body{
-  margin: 0px;
-  padding: 0px;
-  background-color:  black;
-  font-family:'Montserrat', sans-serif;
-  box-sizing: border-box;
-}
-
-.nav_bar ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #3c3c3c;
-}
-
-.nav_bar li{
-  float: left;
-}
-
-.nav_bar li a{
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 24px;
-}
-
 #contact{
   text-decoration-line: underline;
   text-decoration-color: red;
   text-decoration-thickness: 5px;
-  text-underline-offset: 11px;;
-}
-
-.nav_bar li a:hover{
-  color:white;
-  background-color: gray;
-}
-.logo li a{
-  padding: 0;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0;
-}
-.nav_bar img{
-  width: 117px;
-  height: 55px;
+  text-underline-offset: 12px;;
 }
 
 #con{
@@ -84,13 +39,14 @@ td{
 
 textarea{
   width: 200px;
-  height: 50px; 
+  height: 80px; 
+  border-radius: 8px;
+  resize: none;
 }
 .btn{
   font-family: "Montserrat";
   font-size: 0.8em;
   color: white;
-  margin-top: 20px;
   padding: 10px;
   border-radius: 15px;
   background-color: #63d475 ;

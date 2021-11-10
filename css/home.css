@@ -1,76 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-body{
-  margin: 0px;
-  padding: 0px;
-  background-color: #212121;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.nav_bar ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #3c3c3c;
-}
-
-.nav_bar li{
-  float: left;
-}
-
-.nav_bar li a{
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 24px;
-}
-
-.nav_bar li a:hover{
-  color: black;
-  background-color: gray;
-}
-.logo li a{
-  padding: 0;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0;
-}
-.nav_bar img{
-  width: 117px;
-  height: 55px;
-}
-
-.typewriter h1{
-  font-weight: bold;
-  font-size: 30px;
-  color: white;
-  font-family: 'Source Code Pro', monospace;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: solid 3px orange;
-  animation: typing 3s steps(30, end) 1s 1 normal both, blinking .5s steps(30,end) infinite;
-}
-
-@keyframes typing{
-  from {
-    width: 0;
-  }
-  to {
-    width: 280px;
-  }
-}
-
-@keyframes blinking {
-  from{
-    border-right-color: orange;
-  }
-  to{
-    border-right-color: transparent;
-  }
-}
-
 #potd{
   font-family: 'Montserrat', sans-serif;
   margin-top: 0;
@@ -80,11 +7,12 @@ body{
 }
 
 .POTD{
-  background-color: black;
+  background-color: #ffffff10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  border: 2px solid white;
   border-radius: 10px;
   height: 35%;
   width: 40%;
@@ -128,7 +56,7 @@ body{
 
 .news{
   color: white;
-  background-image: url(news.jpg);
+  background-image: url("../news.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 10rem;
@@ -138,7 +66,7 @@ body{
   float: right;
   border-radius: 1em;
   overflow: hidden;
-  transition: transform 100ms ease;
+  transition: transform 200ms ease;
 }
 
 .news:hover{
