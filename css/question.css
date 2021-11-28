@@ -27,13 +27,13 @@
 .editor-top{
   display: flex;
   justify-content: space-between;
-  margin: 0.5em;
+  margin: 0.7em 20px;
 }
 
 .CodeMirror{
   font-size: 16px;
   border-radius: 5px;
-  margin: auto 10px;
+  margin: 20px 20px;
 }
 
 .CodeMirror-scrollbar-filler{
@@ -51,24 +51,34 @@
 .editor-bottom{
   display: flex;
   justify-content: space-between;
-  margin: 0.5em;
-  width: 45%;
+  margin: 0.6em 20px;
+  width: 50%;
   flex-wrap: wrap;
   align-items: left;
 }
 
 .btn{
-
+  display: flex;
+  margin: 0 18px;
+  justify-content: space-evenly;
+  width: 13%;
 }
 
 .run, .submit{
   font-size: 15px;
+  font-family: 'Montserrat';
   border: none;
   border-radius: 5px;
   padding: 8px;
-  margin: 15px 10px;
+  margin: 15px 25px;
+  background-color: #63d475;
+  transition: 500ms;
 }
 
+.run:hover, .submit:hover{
+  color: white;
+  cursor: pointer;
+}
 
 .editor-bottom > div > label{
   display: block;
@@ -76,8 +86,11 @@
 }
 
 .input-field, .output-field{
+
   height: 120px;
-  width: 20em;
+  color: white;
+  font-size: 1.2em;
+  width: 18em;
   border: none;
   border-radius: 5px;
   background-color: #3c3c3c;
