@@ -1,9 +1,18 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 20px;
+  align-items: center;
+  flex: 1 1 33%;
+}
+
 #potd{
   font-family: 'Montserrat', sans-serif;
-  margin-top: 0;
-  font-size: 1.1em;
+  margin: 15px;
+  font-size: 20px;
   line-height: 1.5;
-  padding-left: 20px;
 }
 
 .POTD{
@@ -11,22 +20,20 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: hidden; 
   border-radius: 10px;
-  height: 35%;
   width: 40%;
-  margin: 20px;
-  margin-top: 20px;
   color:white;
   font-family: monospace;
   font-size: 15px;
-  float: left;
+  /* margin-top: 20px; */
 }
+
 .POTD a{
   text-align: center;
+  white-space: nowrap;
   line-height: 2em;
-  padding: 20px;
+  margin: 0 15px;
   font-weight: bold;
   font-size: 2em;
 }
@@ -47,7 +54,7 @@
   display: inline block;
   cursor: pointer;
   padding: 10px;
-  margin-left: 15px;
+  margin: 15px;
 }
 
 .submit_btn:hover{
@@ -60,7 +67,7 @@
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 10rem;
-  margin: 20px;
+  margin: 20px 0;
   max-width: 35ch;
   font-family: 'Montserrat', sans-serif;
   float: right;
@@ -105,6 +112,18 @@
 .news:hover .news-title::after{
   transform: scaleX(1);
 }
+
+.content{
+  background-color: #ffffff10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); 
+  padding: 10px;
+  width: 70%;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
 footer{
   font-size: 20px;
   margin-left: auto; margin-right: auto;
