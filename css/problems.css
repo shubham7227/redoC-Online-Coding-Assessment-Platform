@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway');
+.list-problems{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+  margin: 10px;
+}
+
+#problems{
+  text-decoration-line: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 14px;;
+}
+
+.tablelist{
+  width: 75%;
+  height: 100%;
+}
+
+#table{
+  border: none;
+  border-collapse: collapse;
+  border-radius: 10px;;
+  background-color: #3c3c3c;
+  margin: 20px 20px 20px 10px;
+  font-size: 20px;
+}
+
+th, td{
+  padding: 15px 20px;
+  font-family: 'Raleway';
+}
+
+th{
+  border-bottom: 1px solid gray;
+}
+
+.news{
+  color: white;
+  background-image: url("../news.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-top: 10rem;
+  margin: 20px 0;
+  max-width: 35ch;
+  font-family: 'Montserrat', sans-serif;
+  float: right;
+  border-radius: 1em;
+  overflow: hidden;
+  transition: transform 200ms ease;
+}
+
+.side{
+  display: flex;
+  flex-direction: column;
+}
+
+.news:hover{
+  transform: scale(1.05);  
+}
+
+.news-content{
+  padding: 1.5em;
+  padding-right: 0;
+  background: linear-gradient(
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 10% / 1));
+}
+.news-title{
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  position: relative;
+  width: max-content;
+  padding:20px 0 5px 0;
+}
+.news-title::after{
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: blue;
+  left: 0;
+  bottom: 0;
+  transform: scale(0);
+  transform-origin: left;
+  transition: transform 500ms ease;
+}
+
+.news:hover .news-title::after{
+  transform: scaleX(1);
+}
