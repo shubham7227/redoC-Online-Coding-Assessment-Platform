@@ -45,8 +45,8 @@ th, td{
   text-overflow: ellipsis;
 }
 
-th{
-  border-bottom: 1px solid gray;
+tr:nth-child(even){
+  background-color:#232222;
 }
 
 .news{
@@ -104,4 +104,23 @@ th{
 
 .news:hover .news-title::after{
   transform: scaleX(1);
+}
+
+#btn{
+  width: 100px;
+  color: white;
+  border: none;
+  border-radius:6px;
+  padding: 5px;
+  font-size: 15px;
+  background-color: #63d475;
+  transition: 500ms;
+}
+
+#btn:hover{
+  color: black;
+  cursor: pointer;
+}
+.btns{
+  background-color: #232222;
 }
