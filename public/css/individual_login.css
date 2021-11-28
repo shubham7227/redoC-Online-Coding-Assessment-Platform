@@ -1,14 +1,19 @@
   body {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
   }
-
-  p{
-    font-size: 10px;
-    margin: -40px 0 -8px 2px;
-    padding: 0;
-    position: relative;
+  
+  a {
+    color: #62760c;
   }
-
+  
+  a:hover {
+    color: orange;
+    text-decoration: none;
+  }
+  
+  .bttn{
+    text-decoration: none;
+  }
   .login-form {
     margin-top: 3%;
     margin-bottom: 3%;
@@ -20,8 +25,8 @@
     padding: 50px 40px;
     border-radius: 25px;
     margin-left: 35%;
-    margin-right: 6%;
     float: right;
+    margin-right: 6%;
   }
   
   .login-form h1 {
@@ -44,6 +49,12 @@
     height: 25px;
   }
   
+  .show-password {
+    color: #adadad;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
   .bottom-txt {
     font-weight: 400;
     margin-top: 50px;
@@ -54,7 +65,7 @@
     font-weight: 400;
     margin-bottom: 5px;
   }
-
+  
   .backimg img{
     float: left;
     margin: 20px;
@@ -66,13 +77,14 @@
 
   .btn{
     background-color: silver;
-    border-radius: 10px;
+    border-radius: 5px;
     color: black;
     text-decoration: none;
     text-align: center;
     display: inline block;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 10px;
+    margin-top: 4px;
     width: 150px;
     font-size: 15px;
   }
@@ -80,14 +92,5 @@
   .btn:hover{
     background-color: beige;
     color: black;
-  }
-  
-  a {
-    color: #62760c;
-  }
-  
-  a:hover {
-    color: orange;
-    text-decoration: none;
   }
   

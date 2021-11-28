@@ -90,3 +90,7 @@ a:hover {
   background-color: beige;
   color: black;
 }
+
+.bttn{
+  text-decoration: none;
+}

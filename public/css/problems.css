@@ -51,7 +51,7 @@ tr:nth-child(even){
 
 .news{
   color: white;
-  background-image: url("../news.jpg");
+  background-image: url("/assets/news.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 10rem;
@@ -67,6 +67,7 @@ tr:nth-child(even){
 .side{
   display: flex;
   flex-direction: column;
+  width: 25%;
 }
 
 .news:hover{
@@ -112,6 +113,7 @@ tr:nth-child(even){
   border: none;
   border-radius:6px;
   padding: 5px;
+  
   font-size: 15px;
   background-color: #63d475;
   transition: 500ms;

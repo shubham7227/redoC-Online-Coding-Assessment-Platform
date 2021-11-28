@@ -4,7 +4,6 @@ const inputField = document.getElementById("input");
 const outputField = document.getElementById("output");
 const questionDiv = document.getElementById("question");
 const params = new URL(location.href).searchParams;
-var domain = "https://www.google.com"
 const question = params.get("qid");
 
 var editor = CodeMirror(document.querySelector('.editor'), {

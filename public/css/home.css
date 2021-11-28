@@ -63,7 +63,7 @@
 
 .news{
   color: white;
-  background-image: url("../news.jpg");
+  background-image: url("/assets/news.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 10rem;

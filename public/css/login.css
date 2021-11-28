@@ -1,5 +1,6 @@
-body {
+  body {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    
   }
   a {
     color: #62760c;
@@ -7,6 +8,10 @@ body {
   
   a:hover {
     color: orange;
+    text-decoration: none;
+  }
+
+  .btn{
     text-decoration: none;
   }
   .login-form-home {
