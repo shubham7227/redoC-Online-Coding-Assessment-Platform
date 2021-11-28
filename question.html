@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question</title>
+
+  <link rel = "icon" type="image/png" href="./assets/favicon.png">
+  <link rel = "stylesheet" href = "./css/default.css">
+  <link rel = "stylesheet" href = "./css/question.css">
+</head>
+<body>
+  <div class="nav_bar">
+    <ul>
+      <div class="logo"><li><a href = "home.html"><img src = "logob.png"></a></li></div>
+      <li><a href = "#">Problems</a></li>
+      <li><a href = "#">Contest</a></li>
+      <li><a href = "discuss.html">Discuss</a></li>
+      <li><a href = "contact.html">Contact</a></li>
+      <li><a href = "#">Leaderboard</a></li>
+      <li style="float: right;"><a href = "#">Logout</a></li>
+      <li style="float: right;"><a href = "#">Profile</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div id="question">Loading...</div>
+    <div class="editor-area">
+      <div class="editor-top">
+        <span class="solution">User solution</span>
+          <div class="language">
+            <label for="lang">Language:</label>
+
+            <select name="lang" id="lang" class="lang">
+              <option value="cpp">C++</option>
+              <option value="java">Java</option>
+              <option value="python">Python</option>
+            </select>
+          </div>      
+      </div>
+
+      <div class="editor"></div>
+      <div class="editor-bottom">
+        <div class="input">
+          <label for="input">Input:</label>
+          <textarea name="input" id="input" class="input-field"></textarea>
+        </div>
+        <div class="output">
+            <label for="output">Output:</label>
+            <textarea name="output" id="output" class="output-field"></textarea>
+        </div>
+      </div>
+      <div class="btn">
+         <button onclick = "run()" class="run">Run</button>
+         <button onclick = "submit()" class="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+  <!--Code Mirrors-->
+  <script src = "./js/default.js"></script>
+  <script src = "./js/question.js"></script>
+  <script src=></script>
+  <!--Code Mirror CSS-->
+  <script src=></script>
+  <!--Code Mirror.min-->
+  <script src=></script>
+  <!--C++-->
+  <script src=></script>
+  <!--Java-->
+  <script src=></script>
+  <!--Python-->
+</body>
+</html>
