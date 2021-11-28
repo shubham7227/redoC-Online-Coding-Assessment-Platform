@@ -3,24 +3,29 @@ const langSelect = document.getElementById("lang");
 const inputField = document.getElementById("input");
 const outputField = document.getElementById("output");
 const questionDiv = document.getElementById("question");
+const params = new URL(location.href).searchParams;
+var domain = "https://www.google.com"
+const question = params.get("qid");
 
-var editor = CodeMirror(editorDiv, {
+var editor = CodeMirror(document.querySelector('.editor'), {
   lineNumbers: true,
-  lineWrapping: true,
-  mode: "clike",
-  theme: "dracula",
+  lineWraping: true,
+  mode: 'clike',
+  theme: 'darcula',
   lint: true,
   indentUnit: 4,
   tabSize: 4,
   smartIndent: true,
   closeBrackets: true,
-  value: "",
+  value: ""
 });
 
 langSelect.onchange = () => {
   var toLang = langSelect.value;
   if (toLang == "java")
     toLang = "text/x-java";
+  if (toLang == "clike")
+    toLang = "text/x-c++src";
   if (toLang == "python")
     toLang = "text/x-python";
   editor.setOption("mode", toLang)
@@ -28,9 +33,10 @@ langSelect.onchange = () => {
 
 const langMap = {
   python: "py",
-  cpp: "cpp",
+  clike: "cpp",
   java: "java"
 };
+
 
 async function run() {
   try {
@@ -62,8 +68,12 @@ async function run() {
       showError(output.error);
       return;
     }
-    if (output.status == "1"
-    )
+    if (output.status == "1")
+      console.log("correct");
   }
+  catch (e) {
+    console.log(e);
+  }
+
 }
 

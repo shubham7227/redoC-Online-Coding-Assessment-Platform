@@ -28,9 +28,21 @@
   font-size: 20px;
 }
 
+#table a{
+  text-decoration: none;
+  color: white;
+}
+#table a:hover{
+  color: blue;
+  transition: 500ms;
+}
+
 th, td{
   padding: 15px 20px;
+  text-align: left;
   font-family: 'Raleway';
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 th{

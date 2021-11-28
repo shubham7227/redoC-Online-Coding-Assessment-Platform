@@ -75,3 +75,15 @@ body{
     border-right-color: transparent;
   }
 }
+
+footer{
+  font-size: 20px;
+  margin-left: auto; margin-right: auto;
+  left: 0; right: 0;
+  text-align: center;
+  color:white;
+  background-color: grey;
+  position: fixed;
+  bottom: 0;
+  padding: 5px;
+}

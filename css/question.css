@@ -1,5 +1,6 @@
 .container{
   margin: 0 4%;
+  margin-bottom: 40px;
   color: white;
 }
 
@@ -13,7 +14,9 @@
 }
 
 .lang{
-  height: 24px;
+  height: 30px;
+  font-family: 'Montserrat';
+  padding: 5px;
   background-color:#3c3c3c;
   color: white;
   outline: none;
@@ -28,7 +31,21 @@
 }
 
 .CodeMirror{
-  font-size: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: auto 10px;
+}
+
+.CodeMirror-scrollbar-filler{
+  background-color: #3c3c3c !important;
+}
+
+.CodeMirror-hscrollbar {
+    height: 0;
+}
+
+.CodeMirror-vscrollbar {
+    width: 0;
 }
 
 .editor-bottom{
