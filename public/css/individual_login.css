@@ -2,6 +2,22 @@
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
   }
   
+  .alert{
+    position: relative;
+    float: right;
+    width: 30%;
+    height: 6%;
+    background-color: #f74242;
+    color: white;
+    border-radius: 20px;
+    margin-right: 110px;
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 22px;
+    border: 3px solid black;
+  }
+  
   a {
     color: #62760c;
   }
@@ -37,13 +53,14 @@
   .txtb {
     border-bottom: 2px solid #adadad;
     margin-bottom: 30px;
+    font-size: 18px;
   }
   
   .txtb input {
     border: none;
     width: 100%;
     outline: none;
-    font-size: 15px;
+    font-size: 18px;
     color: #f5f2d0;
     background: none;
     height: 25px;
@@ -87,6 +104,7 @@
     margin-top: 4px;
     width: 150px;
     font-size: 15px;
+    font-weight: bold;
   }
   
   .btn:hover{
