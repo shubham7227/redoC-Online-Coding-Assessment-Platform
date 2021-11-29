@@ -20,6 +20,23 @@ const db = mongoose.connection
 db.on("error", (error) => console.log(error))
 db.once("open", () => console.log("Connected to database"))
 
+const authenticate = async (req, res, next) => {
+  try {
+    const token = req.headers.token
+    const authUser = jwt.verify(token, process.env.JWT_SECRET)
+    var name = authUser.fname
+    var email = authUser.email
+    var query = { email: email }
+    await db.findOne(query, function (err, result) {
+      if (err) throw err
+      req.authUser = { name, email }
+      next()
+    })
+  } catch (e) {
+    res.status(403).send(errmsg("Authentication Failed!!"))
+  }
+}
+
 app.get("/", (req, res) => {
   res.render("login")
 })
@@ -42,21 +59,28 @@ app.get("/individual_login", (req, res) => {
 
 app.post("/individual_login", async (req, res) => {
   try {
-    const abc = await user.findOne({
+    const result = await user.findOne({
       email: req.body.email,
       password: req.body.password,
-    })
-    if (abc != null) {
-      jwt.sign({ email: req.body.email }, "secretkey", (err, token) => {})
-      res.render("home")
-    } else {
+    });
+    if (result != null) {
+      const token = jwt.sign({
+        result.fname,
+        result.email,
+      },
+        process.env.JWT_SECRET
+      );
+      res.status(200).send({ token });
+    }
+    else {
       res.render("individual_login", {
         failure: true,
-        message: "Incorrect email or password",
-      })
+        message: "Incorrect Email or Password!!",
+      });
     }
-  } catch (error) {
-    res.status(500).json({ message: error.message })
+  }
+  catch (e) {
+    res.status(500).json({ message: error.message });
   }
 })
 
@@ -83,7 +107,7 @@ app.post("/individual_signup", async (req, res) => {
   }
 })
 
-app.get("/home", verifyToken, (req, res) => {
+app.get("/home", authenticate, (req, res) => {
   jwt.verify(req.token, "secretkey", (err, authData) => {
     if (err) res.sendStatus(403)
     else res.render("home")
@@ -105,14 +129,3 @@ app.get("/problems", (req, res) => {
 app.listen(5000, () => {
   console.log("Server started on port 5000")
 })
-
-function verifyToken(req, res, next) {
-  //Auth Header
-  const bearerHeader = req.header["authorization"]
-
-  if (typeof bearerHeader !== "undefined") {
-    const bearerToken = bearerHeader.split(" ")[1]
-    req.token = bearerToken
-    next()
-  } else res.sendStatus(403)
-}

@@ -1,45 +1,61 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href = "css/individual_login.css">
-    <script src = "js/login.js"></script>
-</head>
-<body>
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/individual_login.css" />
+    <script src="js/login.js"></script>
+  </head>
+  <body>
     <% if(failure) { %>
-        <div class="alert"><%= message %></div>
+    <div class="alert"><%= message %></div>
     <% } %>
     <div>
-    <form class="login-form" action="/individual_login" method="post">
+      <form class="login-form" action="/individual_login" method="post">
         <h1>Individual Login</h1>
-    
+
         <div class="txtb">
-            <input name="email" type="text" placeholder="E-mail" id="email">
+          <input name="email" type="text" placeholder="E-mail" id="email" />
         </div>
 
         <div class="txtb">
-            <input name="password" type="password" placeholder="Password" id="password">
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            id="password"
+          />
         </div>
 
         <div class="show-password">
-            <input type="checkbox" id="password-checkbox" name="password-checkbox" onclick="showpassword()" value="invisible">
-            <label for="password-checkbox"> Show password</label><br>
+          <input
+            type="checkbox"
+            id="password-checkbox"
+            name="password-checkbox"
+            onclick="showpassword()"
+            value="invisible"
+          />
+          <label for="password-checkbox"> Show password</label><br />
         </div>
         <center>
-            <button type="login" class="btn">Login</button>
+          <button type="login" id="login" class="btn">Login</button>
         </center>
         <div class="bottom-txt">
-            <div class="acc">Don't have an account? <a href="/individual_signup" class="bttn">Sign Up</a></div>
-            <div class="acc">Login as Admin? <a href="/admin_login" class="bttn">Admin Login</a></div>
+          <div class="acc">
+            Don't have an account?
+            <a href="/individual_signup" class="bttn">Sign Up</a>
+          </div>
+          <div class="acc">
+            Login as Admin? <a href="/admin_login" class="bttn">Admin Login</a>
+          </div>
         </div>
-    </form>
-    <div class = "backimg">
-            <img src = "assets/background.jpg">
-        </div>
+      </form>
+      <div class="backimg">
+        <img src="assets/background.jpg" />
+      </div>
     </div>
-</body>
+  </body>
 </html>
