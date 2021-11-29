@@ -1,27 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const MongoClient = require('mongodb').MongoClient
-
+const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
 const app = express();
-
+require('./models/db');
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var url = "mongodb+srv://redocadmin:redocadmin@cluster0.ebyoh.mongodb.net/REDOC?retryWrites=true&w=majority";
 
-
-MongoClient.connect(url, (err, db) => {
-    if (err) return console.error(err)
-  console.log('Connected to Database')
-  var myobj = { name: "Hello", address: "HKSJHJIKS"};
-  db.collection("customers").insertOne(myobj, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    db.close();
-  });
-});
 
 app.get("/", (req,res) => {
     res.render("login");
@@ -61,6 +51,14 @@ app.get("/contact", (req,res) => {
 
 app.get("/problems", (req,res) => {
     res.render("problems");
+});
+
+app.post('/signed', function (req, res) {
+    var name = req.body.fname + " " + req.body.mname + " " + req.body.lname,
+        email = req.body.email,
+        password = req.body.password;
+    
+    
 });
 
 app.listen(5000,() => {
