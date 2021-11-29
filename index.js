@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const user = require('./models/users');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-dotenv.config();
-process.env.TOKEN_SECRET;
 
 const app = express();
 
@@ -17,9 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-const url = "DATABASE_URL=mongodb+srv://redocadmin:redocadmin@cluster0.ebyoh.mongodb.net/REDOC?retryWrites=true&w=majority";
-//mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true});
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true});
 
 const db = mongoose.connection;
 db.on('error',(error) => console.log(error));
