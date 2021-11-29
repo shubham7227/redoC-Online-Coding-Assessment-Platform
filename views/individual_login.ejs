@@ -7,11 +7,11 @@
     <link rel="icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href = "css/individual_login.css">
-    <script src = "js/login.js"></script>
+    <!-- <script src = "js/login.js"></script> -->
 </head>
 <body>
     <div>
-    <form class="login-form" action="/student-login" method="post">
+    <form class="login-form" action="/individual_login" method="post">
         <h1>Individual Login</h1>
     
         <div class="txtb">
@@ -27,7 +27,12 @@
         <label for="password-checkbox"> Show password</label><br>
         </div>
         <center>
-        <button type="login" onclick = "login();" class="btn">Login</button>
+            <div id="error"> 
+            <% if(failure) {%>
+                <span><%= message %></span>
+            <% } %>
+            </div>
+            <br><button type="login" onclick = "login();" class="btn">Login</button>
         </center>
         <div class="bottom-txt">
             <div class="acc">Don't have an account? <a href="/individual_signup" class="bttn">Sign Up</a></div>

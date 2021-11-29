@@ -1,27 +1,22 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const MongoClient = require('mongodb').MongoClient
+const mongoose = require('mongoose');
+const user = require('./models/users');
 
 const app = express();
-
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
-var url = "mongodb+srv://redocadmin:redocadmin@cluster0.ebyoh.mongodb.net/REDOC?retryWrites=true&w=majority";
+mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true});
 
+const db = mongoose.connection;
+db.on('error',(error) => console.log(error));
+db.once('open',() => console.log("Connected to database"));
 
-MongoClient.connect(url, (err, db) => {
-    if (err) return console.error(err)
-  console.log('Connected to Database')
-  var myobj = { name: "Hello", address: "HKSJHJIKS"};
-  db.collection("customers").insertOne(myobj, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    db.close();
-  });
-});
 
 app.get("/", (req,res) => {
     res.render("login");
@@ -40,11 +35,44 @@ app.get("/admin_login", (req,res) => {
 });
 
 app.get("/individual_login", (req,res) => {
-    res.render("individual_login");
+    res.render("individual_login",{failure: false, message: ""});
+});
+
+app.post("/individual_login", async (req,res) => {
+    try{
+        const abc = await user.findOne({"email": req.body.email, "password": req.body.password});
+        if(abc != null){
+            res.render("home");
+        }
+        else{
+            res.render("individual_login",{failure: true, message: "Incorrect email or password"});
+        }
+    }
+    catch(error){
+        res.status(500).json({message: error.message});
+    }
 });
 
 app.get("/individual_signup", (req,res) => {
     res.render("individual_signup");
+});
+
+app.post("/individual_signup", async (req,res) => {
+    const userAdd = new user({
+        fname: req.body.fname,
+        mname: req.body.mname,
+        lname: req.body.lname,
+        _id: req.body.email,
+        password: req.body.password
+    });
+    try{
+        await userAdd.save();
+        res.redirect("individual_login");
+    }
+    catch(error){
+        console.log(error);
+        res.status(400).json({message: error.message});
+    }
 });
 
 app.get("/home", (req,res) => {

@@ -1,5 +1,26 @@
 {
+  "name": "redoc",
+  "version": "1.0.0",
+  "description": "This Website was built as part of J-component of course Internet and Web programming by Sulav Giri, Bikalp KC, Samit Maharjan and Mohammed Rayyan",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubham7227/onlinecompiler.git"
+  },
+  "author": "Sulav Giri, Bikalp KC, Samit Maharjan and Mohammed Rayyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubham7227/onlinecompiler/issues"
+  },
+  "homepage": "https://github.com/shubham7227/onlinecompiler#readme",
   "dependencies": {
-    "codemirror": "^5.64.0"
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongodb": "^4.2.0",
+    "mongoose": "^6.0.13"
   }
 }
