@@ -24,18 +24,62 @@ const authenticate = async (req, res, next) => {
   try {
     const token = req.headers.token
     const authUser = jwt.verify(token, process.env.JWT_SECRET)
-    var name = authUser.fname
-    var email = authUser.email
-    var query = { email: email }
+    var query = { email: authUser.email }
     await db.findOne(query, function (err, result) {
       if (err) throw err
-      req.authUser = { name, email }
+      if (result != null) req.authUser = { email: result._id }
       next()
     })
   } catch (e) {
     res.status(403).send(errmsg("Authentication Failed!!"))
   }
 }
+
+app.post("/individual_login", async (req, res) => {
+  var query = {
+    email: req.body.email,
+    password: req.body.password,
+  }
+  try {
+    await user.findOne(query, function (err, result) {
+      if (result != null) {
+        const token = jwt.sign(
+          {
+            email: result._id,
+          },
+          process.env.JWT_SECRET
+        )
+        res.status(200).send({ token })
+      } else {
+        res.render("individual_login", {
+          failure: true,
+          message: "Incorrect Email or Password!!",
+        })
+      }
+    })
+  } catch (e) {
+    res.status(500).send(errmsg(e))
+  }
+})
+
+app.post("/individual_signup", async (req, res) => {
+  const userAdd = new user({
+    _id: req.body.email,
+    fname: req.body.fname,
+    mname: req.body.mname,
+    lname: req.body.lname,
+    password: req.body.password,
+  })
+  try {
+    await userAdd.save()
+    res.redirect("individual_login")
+  } catch (error) {
+    res.render("individual_signup", {
+      failure: true,
+      message: "Account already exists",
+    })
+  }
+})
 
 app.get("/", (req, res) => {
   res.render("login")
@@ -57,61 +101,21 @@ app.get("/individual_login", (req, res) => {
   res.render("individual_login", { failure: false, message: "" })
 })
 
-app.post("/individual_login", async (req, res) => {
-  try {
-    const result = await user.findOne({
-      email: req.body.email,
-      password: req.body.password,
-    });
-    if (result != null) {
-      const token = jwt.sign({
-        result.fname,
-        result.email,
-      },
-        process.env.JWT_SECRET
-      );
-      res.status(200).send({ token });
-    }
-    else {
-      res.render("individual_login", {
-        failure: true,
-        message: "Incorrect Email or Password!!",
-      });
-    }
-  }
-  catch (e) {
-    res.status(500).json({ message: error.message });
-  }
-})
-
 app.get("/individual_signup", (req, res) => {
   res.render("individual_signup", { failure: false, message: "" })
 })
 
-app.post("/individual_signup", async (req, res) => {
-  const userAdd = new user({
-    fname: req.body.fname,
-    mname: req.body.mname,
-    lname: req.body.lname,
-    _id: req.body.email,
-    password: req.body.password,
-  })
+app.get("/home", authenticate, async (req, res) => {
   try {
-    await userAdd.save()
-    res.redirect("individual_login")
-  } catch (error) {
-    res.render("individual_signup", {
-      failure: true,
-      message: "Account already exists",
+    var { email } = req.authUser
+    var query = { email }
+    await user.findOne(query, function (err, result) {
+      if (err) throw err
+      res.render("home")
     })
+  } catch (e) {
+    res.redirect("/individual_login")
   }
-})
-
-app.get("/home", authenticate, (req, res) => {
-  jwt.verify(req.token, "secretkey", (err, authData) => {
-    if (err) res.sendStatus(403)
-    else res.render("home")
-  })
 })
 
 app.get("/question", (req, res) => {
