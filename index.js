@@ -14,6 +14,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 
+function errmsg(msg) {
+  return { error: msg || "Something went wrong!" }
+}
+
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
 const db = mongoose.connection
@@ -25,13 +29,13 @@ const authenticate = async (req, res, next) => {
     const token = req.headers.token
     const authUser = jwt.verify(token, process.env.JWT_SECRET)
     var query = { email: authUser.email }
-    await db.findOne(query, function (err, result) {
+    await user.findOne(query, function (err, result) {
       if (err) throw err
       if (result != null) req.authUser = { email: result._id }
       next()
     })
   } catch (e) {
-    res.status(403).send(errmsg("Authentication Failed!!"))
+    res.redirect("/individual_login")
   }
 }
 
@@ -81,6 +85,58 @@ app.post("/individual_signup", async (req, res) => {
   }
 })
 
+app.get("/home", authenticate, async (req, res) => {
+  try {
+    var { email } = req.authUser
+    var query = { email }
+    await user.findOne(query, function (err, result) {
+      if (err) throw err
+      res.status(200).send(result)
+    })
+  } catch (e) {
+    res.status(500).send(errmsg(e))
+  }
+})
+
+app.get("/contact", authenticate, async (req, res) => {
+  try {
+    var { email } = req.authUser
+    var query = { email }
+    await user.findOne(query, function (err, result) {
+      if (err) throw err
+      res.status(200).send(result)
+    })
+  } catch (e) {
+    res.status(500).send(errmsg(e))
+  }
+})
+
+app.get("/problems", async (req, res) => {
+  try {
+    var { email } = req.authUser
+    var query = { email }
+    await user.findOne(query, function (err, result) {
+      if (err) throw err
+      res.status(200).send(result)
+    })
+  } catch (e) {
+    res.status(500).send(errmsg(e))
+  }
+})
+
+app.get("/question", async (req, res) => {
+  try {
+    var { email } = req.authUser
+    var query = { email }
+    await user.findOne(query, function (err, result) {
+      if (err) throw err
+      res.status(200).send(result)
+    })
+  } catch (e) {
+    res.status(500).send(errmsg(e))
+  }
+})
+
 app.get("/", (req, res) => {
   res.render("login")
 })
@@ -103,31 +159,6 @@ app.get("/individual_login", (req, res) => {
 
 app.get("/individual_signup", (req, res) => {
   res.render("individual_signup", { failure: false, message: "" })
-})
-
-app.get("/home", authenticate, async (req, res) => {
-  try {
-    var { email } = req.authUser
-    var query = { email }
-    await user.findOne(query, function (err, result) {
-      if (err) throw err
-      res.render("home")
-    })
-  } catch (e) {
-    res.redirect("/individual_login")
-  }
-})
-
-app.get("/question", (req, res) => {
-  res.render("question")
-})
-
-app.get("/contact", (req, res) => {
-  res.render("contact")
-})
-
-app.get("/problems", (req, res) => {
-  res.render("problems")
 })
 
 app.listen(5000, () => {
