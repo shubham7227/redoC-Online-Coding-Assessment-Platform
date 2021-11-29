@@ -123,6 +123,9 @@ tr:nth-child(even){
   color: black;
   cursor: pointer;
 }
+
 .btns{
   background-color: #232222;
+  line-height: 20px;
+  vertical-align: bottom;
 }
