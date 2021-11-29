@@ -8,6 +8,8 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -16,7 +18,6 @@ mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error',(error) => console.log(error));
 db.once('open',() => console.log("Connected to database"));
-
 
 app.get("/", (req,res) => {
     res.render("login");
