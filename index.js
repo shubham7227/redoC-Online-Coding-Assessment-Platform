@@ -3,6 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const user = require('./models/users');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
+process.env.TOKEN_SECRET;
 
 const app = express();
 
@@ -13,6 +17,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+function generateAccessToken(email) {
+    return jwt.sign(email, process.env.TOKEN_SECRET /*, {expriesIn : '100s'}*/);
+}
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.sendStatus(401);
+    jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any user: any) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    })
+}
 mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true});
 
 const db = mongoose.connection;
@@ -48,6 +66,8 @@ app.post("/individual_login", async (req,res) => {
         else{
             res.render("individual_login",{failure: true, message: "Incorrect email or password"});
         }
+        const token = generateAccessToken({ email: req.body.email });
+        res.json(token);
     }
     catch(error){
         res.status(500).json({message: error.message});
