@@ -61,7 +61,7 @@ app.post("/individual_login", async (req, res) => {
 })
 
 app.get("/individual_signup", (req, res) => {
-  res.render("individual_signup")
+  res.render("individual_signup", { failure: false, message: "" })
 })
 
 app.post("/individual_signup", async (req, res) => {
@@ -76,8 +76,10 @@ app.post("/individual_signup", async (req, res) => {
     await userAdd.save()
     res.redirect("individual_login")
   } catch (error) {
-    console.log(error)
-    res.status(400).json({ message: error.message })
+    res.render("individual_signup", {
+      failure: true,
+      message: "Account already exists",
+    })
   }
 })
 

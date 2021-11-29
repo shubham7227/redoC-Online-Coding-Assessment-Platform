@@ -34,13 +34,14 @@ a:hover {
 .txtb {
   border-bottom: 2px solid #adadad;
   margin-bottom: 30px;
+  font-size: 18px;
 }
 
 .txtb input {
   border: none;
   width: 100%;
   outline: none;
-  font-size: 15px;
+  font-size: 18px;
   color: #f5f2d0;
   background: none;
   height: 25px;
@@ -84,6 +85,7 @@ a:hover {
   margin-top: 4px;
   width: 150px;
   font-size: 15px;
+  font-weight: bold;
 }
 
 .btn:hover{
