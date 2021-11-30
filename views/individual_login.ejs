@@ -4,24 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-<<<<<<< HEAD
     <link rel="icon" href="/assets/favicon.ico" />
     <link rel="stylesheet" href="css/default.css" />
     <link rel="stylesheet" href="css/individual_login.css" />
+    <script src="js/login.js"></script>
   </head>
   <body>
     <% if(failure) { %>
     <div class="alert"><%= message %></div>
-=======
-    <link rel="icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href = "css/individual_login.css">
-    <script src = "js/login.js"></script>
-</head>
-<body>
-    <% if(failure) { %>
-        <div class="alert"><%= message %></div>
->>>>>>> 3835318941c9d121054932031274e338c9c2259d
     <% } %>
     <div>
       <form
@@ -37,7 +27,6 @@
         </div>
 
         <div class="txtb">
-<<<<<<< HEAD
           <input
             name="password"
             type="password"
@@ -57,18 +46,7 @@
           <label for="password-checkbox"> Show password</label><br />
         </div>
         <center>
-          <button type="login" id="login" class="btn">Login</button>
-=======
-            <input name="password" type="password" placeholder="Password" id="password">
-        </div>
-
-        <div class="show-password">
-            <input type="checkbox" id="password-checkbox" name="password-checkbox" onclick="showpassword()" value="invisible">
-            <label for="password-checkbox"> Show password</label><br>
-        </div>
-        <center>
-            <button type="login" class="btn">Login</button>
->>>>>>> 3835318941c9d121054932031274e338c9c2259d
+          <button type="login" class="btn">Login</button>
         </center>
         <div class="bottom-txt">
           <div class="acc">
