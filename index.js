@@ -35,23 +35,6 @@ app.get("/login", (req, res) => {
   }
 })
 
-<<<<<<< HEAD
-app.get("/admin_login", (req, res) => {
-  if (!loggedIn) {
-    res.render("admin_login")
-  } else {
-    res.redirect("home")
-  }
-})
-
-app.get("/individual_login", (req, res) => {
-  if (!loggedIn) {
-    res.render("individual_login", { failure: false, message: "" })
-  } else {
-    res.redirect("home")
-  }
-})
-=======
 app.get("/individual_login", (req,res) => {
     if(!loggedIn){
         res.render("individual_login",{failure: false, message: ""});
@@ -59,7 +42,6 @@ app.get("/individual_login", (req,res) => {
         res.redirect('home')
     }
 });
->>>>>>> 44fa3fe928ba96d3d406c36d62558166ae0db7c1
 
 var email = ""
 app.post("/individual_login", async (req, res) => {
@@ -301,16 +283,10 @@ app.post("/update_profile", async (req, res) => {
     } else {
       res.redirect("update_profile")
     }
-<<<<<<< HEAD
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 })
-app.listen(5000, () => {
-  console.log("Server started on port 5000")
-})
-=======
-});
 
 var adminloggedIn = false;
 var username;
@@ -370,4 +346,3 @@ app.post("/add_question", async (req,res) => {
 app.listen(5000,() => {
     console.log("Server started on port 5000");
 });
->>>>>>> 44fa3fe928ba96d3d406c36d62558166ae0db7c1
