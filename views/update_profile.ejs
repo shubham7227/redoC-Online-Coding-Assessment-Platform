@@ -1,85 +1,109 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/update_profile.css">
-  <link rel="stylesheet" href="css/default.css">
-  <title>Update Profile</title>
-  <link rel="icon" href="/assets/favicon.ico">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="/js/update_profile.js"></script>
-</head>
-<body>
-  <div class="nav_bar">
-    <ul>
-      <div class="logo"><li><a href = "/home"><img src = "assets/logob.png"></a></li></div>
-      <li><a href = "/problems">Problems</a></li>
-      <li><a href = "#">Contest</a></li>
-      <li><a href = "/discuss">Discuss</a></li>
-      <li><a href = "/contact">Contact</a></li>
-      <li><a href = "/leaderboard">Leaderboard</a></li>
-      <li style="float: right;"><a href = "/logout">Logout</a></li>
-      <li style="float: right;"><a href = "/profile"><%= user.fname %></a></li>
-    </ul>
-  </div>
-  <form class="update-form" onsubmit="return checkinfo()" action="update_profile" method="post">
-    <div class="main-content">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/update_profile.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <title>Update Profile</title>
+    <link rel="icon" href="/assets/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/js/update_profile.js"></script>
+  </head>
+  <body>
+    <div class="nav_bar">
+      <ul>
+        <div class="logo">
+          <li>
+            <a href="/home"><img src="assets/logob.png" /></a>
+          </li>
+        </div>
+        <li><a href="/problems">Problems</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+        <li style="float: right"><a href="/logout">Logout</a></li>
+        <li style="float: right"><a href="/profile"><%= user.fname %></a></li>
+      </ul>
+    </div>
+    <form
+      class="update-form"
+      onsubmit="return checkinfo()"
+      action="update_profile"
+      method="post"
+    >
+      <div class="main-content">
         <div class="image">
-            <img src="/assets/user.png">
+          <img src="/assets/user.png" />
         </div>
         <div class="details">
-            <table>
-                <tr>
-                    <td>
-                        <label for="fname">First Name: </label>
-                    </td>
-                    <td>
-                        <input type="text" name="fname" id="fname" value="<%= user.fname %>">
-                        <span id="fname_error"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="mname">Middle Name: </label>
-                    </td>
-                    <td>
-                        <input type="text" name="mname" id="mname" value="<%= user.mname %>">
-                        <p id="mname_error"></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="lname">Last Name</label>
-                    </td>
-                    <td>
-                        <input type="text" name="lname" id="lname" value="<%= user.lname %>">
-                        <p id="lname_error"></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="password">Password: </label> 
-                    </td>
-                    <td>
-                        <input type="password" name="password" id="password" required>
-                    </td>
-                </tr>
-            </table>
-            <p>Enter your password to update profile</p>
+          <table>
+            <tr>
+              <td>
+                <label for="fname">First Name: </label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="fname"
+                  id="fname"
+                  value="<%= user.fname %>"
+                />
+                <span id="fname_error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="mname">Middle Name: </label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="mname"
+                  id="mname"
+                  value="<%= user.mname %>"
+                />
+                <p id="mname_error"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="lname">Last Name</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lname"
+                  id="lname"
+                  value="<%= user.lname %>"
+                />
+                <p id="lname_error"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="password">Password: </label>
+              </td>
+              <td>
+                <input type="password" name="password" id="password" required />
+              </td>
+            </tr>
+          </table>
+          <p>Enter your password to update profile</p>
         </div>
-        <input type="submit" class="btn" value="Update">
-    </div>
+        <input type="submit" class="btn" value="Update" />
+      </div>
     </form>
     <footer>
-        <p>This website was developed as part of Project Component of CSE3002 by: </p>
-        <ul>
-            <li>Mohammaed Ryyan</li>
-            <li>Samit Maharjan</li>
-            <li>Bikalp KC</li>
-            <li>Sulav Giri</li>
-        </ul>
-        <p class="bottom">copyright &copy; 2021, All rights reserved</p>
+      <p>
+        This website was developed as part of Project Component of CSE3002 by:
+      </p>
+      <ul>
+        <li>Mohammaed Ryyan</li>
+        <li>Samit Maharjan</li>
+        <li>Bikalp KC</li>
+        <li>Sulav Giri</li>
+      </ul>
+      <p class="bottom">copyright &copy; 2021, All rights reserved</p>
     </footer>
   </body>
-  </html>
+</html>

@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -8,28 +8,29 @@
   flex: 1 1 33%;
 }
 
-#potd{
-  font-family: 'Montserrat', sans-serif;
+#potd {
+  font-family: "Montserrat", sans-serif;
   margin: 15px;
   font-size: 20px;
   line-height: 1.5;
 }
 
-.POTD{
+.POTD {
   background-color: #ffffff10;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   white-space: normal;
-  overflow: hidden; 
+  overflow: hidden;
   border-radius: 10px;
   width: 40%;
-  color:white;
+  height: 275px;
+  color: white;
   font-family: monospace;
   font-size: 15px;
   /* margin-top: 20px; */
 }
 
-.POTD a{
+.POTD a {
   text-align: center;
   white-space: nowrap;
   line-height: 2em;
@@ -38,11 +39,10 @@
   font-size: 2em;
 }
 
-
-.submit_btn{
+a.submit_btn {
   background-image: linear-gradient(315deg, #63d475 0%, #324b3c 80%);
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-size: 200% auto;
   transition: 0.5s;
   border: 0px;
@@ -57,11 +57,11 @@
   margin: 15px;
 }
 
-.submit_btn:hover{
+a.submit_btn:hover {
   background-position: right center;
 }
 
-.news{
+.news {
   color: white;
   background-image: url("/assets/news.jpg");
   background-size: 100%;
@@ -69,34 +69,32 @@
   padding-top: 10rem;
   margin: 20px 0;
   max-width: 35ch;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   float: right;
   border-radius: 1em;
   overflow: hidden;
   transition: transform 200ms ease;
 }
 
-.news:hover{
-  transform: scale(1.05);  
+.news:hover {
+  transform: scale(1.05);
 }
 
-.news-content{
+.news-content {
   padding: 1.5em;
   padding-right: 0;
-  background: linear-gradient(
-    hsl(0 0% 0% / 0),
-    hsl(0 0% 10% / 1));
+  background: linear-gradient(hsl(0 0% 0% / 0), hsl(0 0% 10% / 1));
 }
-.news-title{
+.news-title {
   font-weight: bold;
   text-decoration: none;
   color: white;
   font-size: 25px;
   position: relative;
   width: max-content;
-  padding:20px 0 5px 0;
+  padding: 20px 0 5px 0;
 }
-.news-title::after{
+.news-title::after {
   content: "";
   position: absolute;
   height: 3px;
@@ -109,14 +107,14 @@
   transition: transform 500ms ease;
 }
 
-.news:hover .news-title::after{
+.news:hover .news-title::after {
   transform: scaleX(1);
 }
 
-.content{
+.content {
   background-color: #ffffff10;
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
   padding: 10px;
   width: 70%;
   color: white;
@@ -124,18 +122,19 @@
   font-size: 20px;
 }
 
-.typewriter h1{
+.typewriter h1 {
   font-weight: bold;
   font-size: 30px;
   color: white;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   overflow: hidden;
   white-space: nowrap;
   border-right: solid 3px orange;
-  animation: typing 3s steps(30, end) 1s 1 normal both, blinking .5s steps(30,end) infinite;
+  animation: typing 3s steps(30, end) 1s 1 normal both,
+    blinking 0.5s steps(30, end) infinite;
 }
 
-@keyframes typing{
+@keyframes typing {
   from {
     width: 0;
   }
@@ -145,10 +144,10 @@
 }
 
 @keyframes blinking {
-  from{
+  from {
     border-right-color: orange;
   }
-  to{
+  to {
     border-right-color: transparent;
   }
 }
