@@ -1,23 +1,24 @@
-var domain = "https://localhost:5000"
+var domain = "//localhost:5000"
 
-const form = document.getElementsByClassName("login-form")
+const form = document.getElementById("login-form")
 form.addEventListener("submit", login)
 
 //adding jQuery for AJAX
 var script = document.createElement("script")
-srcipt.src = "./jQuery.js"
+script.src = "//code.jquery.com/jquery-3.4.1.min.js"
 script.type = "text/javascript"
 document.getElementsByTagName("head")[0].appendChild(script)
 
 function login(e) {
   e.preventDefault()
   var data = {}
-  data.email = document.getElementById("email")
-  data.password = document.getElementById("password")
-  fetch(domain + "/login", {
+  data.email = document.getElementById("email").value
+  data.password = document.getElementById("password").value
+
+  fetch(domain + "/individual_login", {
     method: "POST",
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify(data),
   })

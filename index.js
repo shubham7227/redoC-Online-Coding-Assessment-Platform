@@ -42,29 +42,35 @@ const authenticate = async (req, res, next) => {
 }
 
 app.post("/individual_login", async (req, res) => {
-  var query = {
-    email: req.body.email,
-    password: req.body.password,
-  }
   try {
-    await user.findOne(query, function (err, result) {
-      if (result != null) {
-        const token = jwt.sign(
-          {
-            email: result._id,
-          },
-          process.env.JWT_SECRET
-        )
-        res.send({ token })
-      } else {
-        res.render("individual_login", {
-          failure: true,
-          message: "Incorrect Email or Password!!",
-        })
-      }
-    })
+    const { email, password } = req.body
+    var query = {
+      _id: email,
+      password,
+    }
+    await user
+      .findOne(query, function (err, result) {
+        if (result != null) {
+          const token = jwt.sign(
+            {
+              email: result._id,
+            },
+            process.env.JWT_SECRET
+          )
+          res.status(200).send({ token })
+        } else {
+          res.render("individual_login", {
+            failure: true,
+            message: "Incorrect Email or Password!!",
+          })
+        }
+      })
+      .clone()
+      .catch(function (err) {
+        console.log(err)
+      })
   } catch (e) {
-    res.status(500).send(errmsg(e))
+    console.log(e)
   }
 })
 

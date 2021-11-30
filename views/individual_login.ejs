@@ -7,14 +7,18 @@
     <link rel="icon" href="/assets/favicon.ico" />
     <link rel="stylesheet" href="css/default.css" />
     <link rel="stylesheet" href="css/individual_login.css" />
-    <script src="js/login.js"></script>
   </head>
   <body>
     <% if(failure) { %>
     <div class="alert"><%= message %></div>
     <% } %>
     <div>
-      <form class="login-form" action="/individual_login" method="post">
+      <form
+        class="login-form"
+        id="login-form"
+        action="/individual_login"
+        method="POST"
+      >
         <h1>Individual Login</h1>
 
         <div class="txtb">
@@ -57,5 +61,6 @@
         <img src="assets/background.jpg" />
       </div>
     </div>
+    <script src="../js/login.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-var domain = "https://localhost:5000"
+var domain = "//localhost:5000"
 
 //jQuery for AJAX
 var script = document.createElement("script")
@@ -13,6 +13,7 @@ function profiler(result) {
 
 windows.onload = function () {
   var token = localStorage.getItem("token")
+  alert(token)
   if (!token) {
     $.ajax({
       type: "POST",
@@ -23,6 +24,7 @@ windows.onload = function () {
     })
     return
   }
+  console.log(domain + "/home")
   fetch(domain + "/home", {
     method: "GET",
     headers: {
