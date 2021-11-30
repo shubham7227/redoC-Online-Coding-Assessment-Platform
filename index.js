@@ -360,10 +360,6 @@ app.get("/admin_home", (req, res) => {
   }
 })
 
-app.listen(5000, () => {
-  console.log("Server started on port 5000")
-})
-
 app.post("/add_question", async (req, res) => {
   try {
     var data = new questions({
@@ -396,4 +392,8 @@ app.get("/leaderboard", async (req, res) => {
       message: "Please, login to continue",
     })
   }
+})
+
+app.listen(5000, () => {
+  console.log("Server started on port 5000")
 })
