@@ -35,7 +35,6 @@ app.get("/login", (req, res) => {
   }
 })
 
-<<<<<<< HEAD
 app.get("/admin_login", (req, res) => {
   if (!loggedIn) {
     res.render("admin_login")
@@ -51,15 +50,6 @@ app.get("/individual_login", (req, res) => {
     res.redirect("home")
   }
 })
-=======
-app.get("/individual_login", (req,res) => {
-    if(!loggedIn){
-        res.render("individual_login",{failure: false, message: ""});
-    }else{
-        res.redirect('home')
-    }
-});
->>>>>>> 44fa3fe928ba96d3d406c36d62558166ae0db7c1
 
 var email = ""
 app.post("/individual_login", async (req, res) => {
@@ -175,9 +165,11 @@ app.get("/contact", (req, res) => {
   }
 })
 
-app.get("/problems", (req, res) => {
+app.get("/problems", async (req, res) => {
   if (loggedIn) {
-    res.render("problems")
+    var questionList = await questions.find();
+    var solved = await user.findById(email, {solved: 1})
+    res.render("problems",{questionList: questionList, solved: solved.solved})
   } else {
     res.render("individual_login", {
       failure: true,
@@ -301,15 +293,9 @@ app.post("/update_profile", async (req, res) => {
     } else {
       res.redirect("update_profile")
     }
-<<<<<<< HEAD
-  } catch (error) {
+    } catch (error) {
     res.status(500).json({ message: error.message })
-  }
-})
-app.listen(5000, () => {
-  console.log("Server started on port 5000")
-})
-=======
+    }
 });
 
 var adminloggedIn = false;
@@ -354,13 +340,9 @@ app.post("/add_question", async (req,res) => {
             description: req.body.description,
             difficulty: req.body.difficulty,
             testcase: req.body.testcase,
+            output: req.body.output,
         })
         await data.save();
-
-        
-        console.log(data);
-        
-
         res.redirect("admin_home");
     }
     catch(error){
@@ -370,4 +352,20 @@ app.post("/add_question", async (req,res) => {
 app.listen(5000,() => {
     console.log("Server started on port 5000");
 });
->>>>>>> 44fa3fe928ba96d3d406c36d62558166ae0db7c1
+
+app.get("/leaderboard", async(req,res) => {
+    if(loggedIn){
+        try{
+            var result = await user.find({},{fname: 1, mname:1, lname:1, solved: 1}).sort({solved: -1});
+            res.render("leaderboard", {result: result});
+        }
+        catch(error){
+            console.log(error);
+        }
+    }else {
+        res.render("individual_login", {
+          failure: true,
+          message: "Please, login to continue",
+        })
+    }
+}) 

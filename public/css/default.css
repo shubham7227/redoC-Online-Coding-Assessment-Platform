@@ -53,9 +53,24 @@ footer{
   left: 0; right: 0;
   text-align: center;
   color:white;
-  background-color: grey;
-  position: fixed;
+  background-color: #3c3c3c;
+  position: relative;
   bottom: 0;
   padding: 5px;
   margin-bottom: 0;
+}
+
+footer p{
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+footer p.bottom{
+  margin-bottom: 30px;
+}
+footer ul{
+  margin: auto;
+  text-align: left;
+  width: 16%;
 }

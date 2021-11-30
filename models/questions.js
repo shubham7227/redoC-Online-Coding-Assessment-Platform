@@ -14,7 +14,8 @@ const questions = new mongoose.Schema({
         type: String,
         required: true
     },
-    testcase: [String]
+    testcase: [String],
+    output: [String]
 })
 
 autoIncrement.initialize(mongoose.connection);

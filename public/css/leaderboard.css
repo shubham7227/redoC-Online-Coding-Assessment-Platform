@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway');
-.list-problems{
+.list-users{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -7,7 +7,7 @@
   margin: 10px;
 }
 
-#problems{
+#leaderboard{
   text-decoration-line: underline;
   text-decoration-color: red;
   text-decoration-thickness: 5px;
@@ -15,7 +15,8 @@
 }
 
 .tablelist{
-  width: 75%;
+  margin: auto;
+  width: 55%;
   height: 100%;
 }
 
@@ -26,16 +27,9 @@
   background-color: #3c3c3c;
   margin: 20px 20px 20px 10px;
   font-size: 20px;
-}
-
-#table a{
-  text-decoration: none;
   color: white;
 }
-#table a:hover{
-  color: blue;
-  transition: 500ms;
-}
+
 
 th, td{
   padding: 15px 20px;
@@ -44,7 +38,9 @@ th, td{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+ .tocentre{
+   text-align: center;
+ }
 tr:nth-child(even){
   background-color:#232222;
 }
@@ -64,9 +60,6 @@ tr:nth-child(even){
   transition: transform 200ms ease;
 }
 
-#tick{
-  text-align: center;
-}
 .side{
   display: flex;
   flex-direction: column;
@@ -109,3 +102,4 @@ tr:nth-child(even){
 .news:hover .news-title::after{
   transform: scaleX(1);
 }
+
