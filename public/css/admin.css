@@ -1,40 +1,66 @@
 body{
-    background: -webkit-linear-gradient(left, #474e4e, #9da19d);
+    background-color: #232222;
     font-family:'Montserrat', sans-serif;
 }
 .question-form{
     width: 60%;
     margin: auto;
     border-radius: 10px;
-    background: rgb(189, 192, 201);
+    background-color: #383434;
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
+    color: white;
 }
 
 .heading{
     margin-top: 20px;
     margin-left: 50px;
 }
+
 .heading h1{
+    display: inline-block;
+    color: white;
+    width: 78%;
     margin: 0;
 }
-.heading h6{
+.heading h4{
     margin-top: 10px;
+    color: red;
 }
 
+.logoutbtn{
+    background-color:darkseagreen;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logoutbtn:hover{
+    background-color: rgb(24, 55, 139);
+    color: black;
+  }
 .main-form{
     margin-left: 20%;
     position: relative;
 }
 
 .field{
-    color: black;
+    color:white;
+    font-size:large;
     font-weight: bold;
     margin-top: 20px;
 }
 .field textarea{
     width: 70%;
     height: 20%;
+    font-size:large;
 }
 .field label{
     margin-bottom: 55px;
@@ -42,6 +68,34 @@ body{
 
 .btn{
     margin-top: 30px;
-    height: 35px;
-    width: 80px;
+    background-color: darkseagreen;
+    color: white;
+    height: 40px;
+    width: 100px;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
 }
+
+.btn:hover{
+    background-color: rgb(24, 55, 139);
+    color: white;
+}
+
+#difficulty{
+    font-size: large;
+}
+
+footer{
+    font-size: 20px;
+    margin: 10px auto;
+    left: 0; right: 0;
+    text-align: center;
+    color:white;
+    background-color:grey;
+    position: fixed;
+    bottom: 0;
+    padding: 5px;
+    margin-bottom: 0;
+  }

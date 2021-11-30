@@ -176,6 +176,7 @@ app.get("/problems", (req, res) => {
 
 app.get("/logout", (req, res) => {
   loggedIn = false
+  adminloggedIn = false;
   res.render("login")
 })
 
@@ -331,3 +332,27 @@ app.get("/admin_home", (req, res) => {
 app.listen(5000, () => {
   console.log("Server started on port 5000")
 })
+
+app.post("/add_question", async (req,res) => {
+    try{
+        var data = new questions({
+            title: req.body.title,
+            description: req.body.description,
+            difficulty: req.body.difficulty,
+            testcase: req.body.testcase,
+        })
+        await data.save();
+
+        
+        console.log(data);
+        
+
+        res.redirect("admin_home");
+    }
+    catch(error){
+        console.log(error);
+    }
+})
+app.listen(5000,() => {
+    console.log("Server started on port 5000");
+});
