@@ -11,7 +11,7 @@ var domain = "//localhost:5000"
 
 window.onload = async () => {
   try {
-    const response = await fetch(`${domain}/question.json/:${question_id}`, {
+    const response = await fetch(`${domain}/question/${question_id}`, {
       method: "GET",
       header: {
         "Content-Type": "application/json",
@@ -79,11 +79,6 @@ async function run() {
     if (op.error) {
       showError(op.error)
       return
-    }
-    if (op.status == "1" && outputField.value.trim() === op.output.trim()) {
-      outputField.style.outline = "2px solid green"
-    } else {
-      outputField.style.outline = "2px solid red"
     }
     outputField.value = op.output
   } catch (e) {

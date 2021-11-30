@@ -53,7 +53,7 @@ footer {
   left: 0;
   right: 0;
   text-align: center;
-  color:white;
+  color: white;
   background-color: #3c3c3c;
   position: relative;
   bottom: 0;
@@ -61,16 +61,16 @@ footer {
   margin-bottom: 0;
 }
 
-footer p{
+footer p {
   width: 60%;
   margin: auto;
   margin-top: 30px;
 }
 
-footer p.bottom{
+footer p.bottom {
   margin-bottom: 30px;
 }
-footer ul{
+footer ul {
   margin: auto;
   text-align: left;
   width: 16%;

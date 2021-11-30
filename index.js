@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt")
 const axios = require("axios")
 const questions = require("./models/questions")
 const admins = require("./models/admin")
+const { render } = require("ejs")
 const app = express()
 
 app.set("view engine", "ejs")
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-
+const domain = "//localhost:5000"
 const db = mongoose.connection
 db.on("error", (error) => console.log(error))
 db.once("open", () => console.log("Connected to database"))
@@ -132,22 +133,39 @@ app.get("/home", (req, res) => {
   }
 })
 
-app.get("/question/:qid", (req, res) => {
-  const { qid } = req.params
-  res.render("question")
-  // if (loggedIn) {
-  //   res.render("question")
-  // } else {
-  //   res.render("individual_login", {
-  //     failure: true,
-  //     message: "Please, login to continue",
-  //   })
-  // }
+app.get("/question", (req, res) => {
+  if (loggedIn) {
+    res.render("question")
+  } else {
+    res.render("individual_login", {
+      failure: true,
+      message: "Please, login to continue",
+    })
+  }
 })
 
-app.get("/question.json/:qid", async (req, res) => {
+// app.get("/question/:qid", (req, res) => {
+//   const { qid } = req.params.qid
+//   if (loggedIn) {
+//     res.render("question")
+//   } else {
+//     res.render("individual_login", {
+//       failure: true,
+//       message: "Please, login to continue",
+//     })
+//   }
+// })
+
+app.get("/question/:qid", async (req, res) => {
   try {
-    const { qid } = req.params
+    if (!loggedIn) {
+      res.render("individual_login", {
+        failure: true,
+        message: "Please, login to continue",
+      })
+      return
+    }
+    const qid = req.params.qid
     const question = await questions.findById(qid)
     if (question != null) {
       var title = question.title,
@@ -342,21 +360,20 @@ app.get("/admin_home", (req, res) => {
   }
 })
 
-app.post("/add_question", async (req,res) => {
-    try{
-        var data = new questions({
-            title: req.body.title,
-            description: req.body.description,
-            difficulty: req.body.difficulty,
-            testcase: req.body.testcase,
-            output: req.body.output,
-        })
-        await data.save();
-        res.redirect("admin_home");
-    }
-    catch(error){
-        console.log(error);
-    }
+app.post("/add_question", async (req, res) => {
+  try {
+    var data = new questions({
+      title: req.body.title,
+      description: req.body.description,
+      difficulty: req.body.difficulty,
+      testcase: req.body.testcase,
+      output: req.body.output,
+    })
+    await data.save()
+    res.redirect("admin_home")
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 app.get("/leaderboard", async (req, res) => {
