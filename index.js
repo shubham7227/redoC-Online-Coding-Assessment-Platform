@@ -173,9 +173,12 @@ app.get("/contact", (req, res) => {
 
 app.get("/problems", async (req, res) => {
   if (loggedIn) {
-    var questionList = await questions.find();
-    var solved = await user.findById(email, {solved: 1})
-    res.render("problems",{questionList: questionList, solved: solved.solved})
+    var questionList = await questions.find()
+    var solved = await user.findById(email, { solved: 1 })
+    res.render("problems", {
+      questionList: questionList,
+      solved: solved.solved,
+    })
   } else {
     res.render("individual_login", {
       failure: true,
@@ -186,7 +189,7 @@ app.get("/problems", async (req, res) => {
 
 app.get("/logout", (req, res) => {
   loggedIn = false
-  adminloggedIn = false;
+  adminloggedIn = false
   res.render("login")
 })
 
@@ -356,23 +359,20 @@ app.post("/add_question", async (req,res) => {
     }
 })
 
-app.get("/leaderboard", async(req,res) => {
-    if(loggedIn){
-        try{
-            var result = await user.find({},{fname: 1, mname:1, lname:1, solved: 1}).sort({solved: -1});
-            res.render("leaderboard", {result: result});
-        }
-        catch(error){
-            console.log(error);
-        }
-    }else {
-        res.render("individual_login", {
-          failure: true,
-          message: "Please, login to continue",
-        })
+app.get("/leaderboard", async (req, res) => {
+  if (loggedIn) {
+    try {
+      var result = await user
+        .find({}, { fname: 1, mname: 1, lname: 1, solved: 1 })
+        .sort({ solved: -1 })
+      res.render("leaderboard", { result: result })
+    } catch (error) {
+      console.log(error)
     }
-}) 
-
-app.listen(5000,() => {
-    console.log("Server started on port 5000");
-});
+  } else {
+    res.render("individual_login", {
+      failure: true,
+      message: "Please, login to continue",
+    })
+  }
+})
