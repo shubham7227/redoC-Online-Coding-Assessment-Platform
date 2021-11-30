@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Question</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question</title>
 
-  <link rel="icon" href="/assets/favicon.ico">
-  <link rel = "stylesheet" href = "css/default.css">
-  <link rel = "stylesheet" href = "css/question.css">
-</head>
-<body>
-  <div class="nav_bar">
-    <ul>
-      <div class="logo"><li><a href = "/home"><img src = "assets/logob.png"></a></li></div>
-      <li><a href = "/problems">Problems</a></li>
-      <li><a href = "#">Contest</a></li>
-      <li><a href = "/discuss">Discuss</a></li>
-      <li><a href = "/contact">Contact</a></li>
-      <li><a href = "#">Leaderboard</a></li>
-      <li style="float: right;"><a href = "#">Logout</a></li>
-      <li style="float: right;"><a href = "#">Profile</a></li>
-    </ul>
-  </div>
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/question.css" />
+  </head>
+  <body>
+    <div class="nav_bar">
+      <ul>
+        <div class="logo">
+          <li>
+            <a href="/home"><img src="assets/logob.png" /></a>
+          </li>
+        </div>
+        <li><a href="/problems">Problems</a></li>
+        <li><a href="#">Contest</a></li>
+        <li><a href="/discuss">Discuss</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li style="float: right"><a href="#">Logout</a></li>
+        <li style="float: right"><a href="#">Profile</a></li>
+      </ul>
+    </div>
 
-  <div class="container">
-    <div id="question">Loading...</div>
-    <div class="editor-area">
-      <div class="editor-top">
-        <span class="solution">User solution</span>
+    <div class="container">
+      <div id="question">Loading...</div>
+      <div class="editor-area">
+        <div class="editor-top">
+          <span class="solution">User solution</span>
           <div class="language">
             <label for="lang">Language:</label>
 
@@ -37,39 +41,43 @@
               <option value="java">Java</option>
               <option value="python">Python</option>
             </select>
-          </div>      
-      </div>
-
-      <div class="editor"></div>
-      <div class="editor-bottom">
-        <div class="input">
-          <label for="input">Input:</label>
-          <textarea name="input" id="input" class="input-field"></textarea>
+          </div>
         </div>
-        <div class="output">
+
+        <div class="editor"></div>
+        <div class="editor-bottom">
+          <div class="input">
+            <label for="input">Input:</label>
+            <textarea name="input" id="input" class="input-field"></textarea>
+          </div>
+          <div class="output">
             <label for="output">Output:</label>
             <textarea name="output" id="output" class="output-field"></textarea>
+          </div>
+        </div>
+        <div class="btn">
+          <button onclick="run()" class="run">Run</button>
+          <button onclick="submit()" class="submit">Submit</button>
         </div>
       </div>
-      <div class="btn">
-         <button onclick = "run()" class="run">Run</button>
-         <button onclick = "submit()" class="submit">Submit</button>
-      </div>
     </div>
-  </div>
-  <!--Code Mirrors-->
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/codemirror.min.js"></script>
-  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/codemirror.min.css">
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/javascript/javascript.min.js"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/clike/clike.min.js"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/python/python.min.js"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/addon/lint/json-lint.min.js"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/addon/lint/json-lint.min.js"></script>
-   <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/theme/darcula.min.css">
-  <script src = "/js/question.js"></script>
-  
- <footer>
-  copyright &copy; 2021, Samit_Sulav_Bikalp_Rayyan
-</footer>
-</body>
+    <!--Code Mirrors-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/codemirror.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/codemirror.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/addon/lint/json-lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/addon/lint/json-lint.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/theme/darcula.min.css"
+    />
+    <script src="./js/question.js"></script>
+
+    <footer>copyright &copy; 2021, Samit_Sulav_Bikalp_Rayyan</footer>
+  </body>
 </html>

@@ -24,7 +24,6 @@ windows.onload = function () {
     })
     return
   }
-  console.log(domain + "/home")
   fetch(domain + "/home", {
     method: "GET",
     headers: {

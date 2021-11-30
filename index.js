@@ -42,50 +42,63 @@ app.get("/admin_login", (req, res) => {
   }
 })
 
-app.get("/individual_login", (req,res) => {
-    if(!loggedIn){
-        res.render("individual_login",{failure: false, message: ""});
-    }else{
-        res.redirect('home')
-    }
-});
+app.get("/individual_login", (req, res) => {
+  if (!loggedIn) {
+    res.render("individual_login", { failure: false, message: "" })
+  } else {
+    res.redirect("home")
+  }
+})
 
-var email = "";
-app.post("/individual_login", async (req,res) => {
-    try{
-        const UserLogin = await user.findById(req.body.email);
-        if (UserLogin == null) {
-            res.render("individual_login",{failure: true, message: "Email not found"});
-        }else{
-            if(await bcrypt.compare(req.body.password, UserLogin.password)){
-                loggedIn = true;
-                email = req.body.email;
-                res.redirect("home");
-            }else{
-                res.render("individual_login",{failure: true, message: "Incorrect email or password"});
-            } 
-        }
+var email = ""
+app.post("/individual_login", async (req, res) => {
+  try {
+    const UserLogin = await user.findById(req.body.email)
+    if (UserLogin == null) {
+      res.render("individual_login", {
+        failure: true,
+        message: "Email not found",
+      })
+    } else {
+      if (await bcrypt.compare(req.body.password, UserLogin.password)) {
+        loggedIn = true
+        email = req.body.email
+        res.redirect("home")
+      } else {
+        res.render("individual_login", {
+          failure: true,
+          message: "Incorrect email or password",
+        })
+      }
     }
-    catch(error){
-        res.status(500).json({message: error.message});
-    }
-});
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
 
-app.get("/home", async (req,res) => {
-    if(loggedIn){
-        const result = await user.findById(email, {_id : 0, mname: 0, lname : 0, password: 0});
-        res.render("home",{name: result.fname});
-    }else{
-        res.render("individual_login",{failure: true, message: "Please, login to continue"});
-    }
-});
+app.get("/home", async (req, res) => {
+  if (loggedIn) {
+    const result = await user.findById(email, {
+      _id: 0,
+      mname: 0,
+      lname: 0,
+      password: 0,
+    })
+    res.render("home", { name: result.fname })
+  } else {
+    res.render("individual_login", {
+      failure: true,
+      message: "Please, login to continue",
+    })
+  }
+})
 
-app.get("/individual_signup", (req,res) => {
-    if(!loggedIn){
-        res.render("individual_signup",{failure: false, message: ""});
-    }else{
-        res.redirect('home')
-    }
+app.get("/individual_signup", (req, res) => {
+  if (!loggedIn) {
+    res.render("individual_signup", { failure: false, message: "" })
+  } else {
+    res.redirect("home")
+  }
 })
 app.post("/individual_signup", async (req, res) => {
   try {
@@ -126,6 +139,17 @@ app.get("/question", (req, res) => {
       failure: true,
       message: "Please, login to continue",
     })
+  }
+})
+
+app.get("/question.json", (req, res) => {
+  try {
+    const title = "Reverse a String"
+    const description = "Write a program to reverse the given input string"
+    const difficulty = "Easy"
+    res.json({ title, description, difficulty })
+  } catch (e) {
+    res.status(500)
   }
 })
 
@@ -189,7 +213,7 @@ app.post("/submit", async (req, res) => {
     var { question_id, code, language } = req.body
     var query = { _id: question_id }
     await Question.findOne(query, async (err, result) => {
-      var { points, testcase, output, _id } = result
+      var { question, testcase, output, _id } = result
 
       var apiOutput = await axios({
         method: "POST",
@@ -229,42 +253,46 @@ app.post("/submit", async (req, res) => {
   }
 })
 
-app.get("/profile", async (req,res) =>{
-    if(loggedIn){
-        const result = await user.findById(email, {password: 0});
-        res.render("profile",{user: result})
-    }
-    else{
-        res.render("individual_login",{failure: true, message: "Please, login to continue"}); 
-    }
+app.get("/profile", async (req, res) => {
+  if (loggedIn) {
+    const result = await user.findById(email, { password: 0 })
+    res.render("profile", { user: result })
+  } else {
+    res.render("individual_login", {
+      failure: true,
+      message: "Please, login to continue",
+    })
+  }
 })
 
-app.get("/update_profile", async (req,res) =>{
-    if(loggedIn){
-        const result = await user.findById(email, {password: 0});
-        res.render("update_profile",{user: result})
-    }
-    else{
-        res.render("individual_login",{failure: true, message: "Please, login to continue"}); 
-    }
+app.get("/update_profile", async (req, res) => {
+  if (loggedIn) {
+    const result = await user.findById(email, { password: 0 })
+    res.render("update_profile", { user: result })
+  } else {
+    res.render("individual_login", {
+      failure: true,
+      message: "Please, login to continue",
+    })
+  }
 })
 
-app.post("/update_profile", async (req,res) =>{
-    try{
-        const UserLogin = await user.findById(email);
-        if(await bcrypt.compare(req.body.password, UserLogin.password)){
-            
-            await user.updateOne({_id: email},{fname: req.body.fname, mname: req.body.mname, lname: req.body.lname});
-            res.redirect("profile");
-        }else{
-            res.redirect("update_profile");
-        }
+app.post("/update_profile", async (req, res) => {
+  try {
+    const UserLogin = await user.findById(email)
+    if (await bcrypt.compare(req.body.password, UserLogin.password)) {
+      await user.updateOne(
+        { _id: email },
+        { fname: req.body.fname, mname: req.body.mname, lname: req.body.lname }
+      )
+      res.redirect("profile")
+    } else {
+      res.redirect("update_profile")
     }
-    catch(error){
-        res.status(500).json({message: error.message});
-    }
-});
-app.listen(5000,() => {
-    console.log("Server started on port 5000");
-});
-
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+app.listen(5000, () => {
+  console.log("Server started on port 5000")
+})
