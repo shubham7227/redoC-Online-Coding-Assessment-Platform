@@ -5,7 +5,8 @@ const mongoose = require("mongoose")
 const user = require("./models/users")
 const bcrypt = require("bcrypt")
 const axios = require("axios")
-const { findOne } = require("./models/users")
+const questions = require("./models/questions")
+const admins = require("./models/admin")
 const app = express()
 
 app.set("view engine", "ejs")
@@ -29,14 +30,6 @@ app.get("/", (req, res) => {
 app.get("/login", (req, res) => {
   if (!loggedIn) {
     res.render("login")
-  } else {
-    res.redirect("home")
-  }
-})
-
-app.get("/admin_login", (req, res) => {
-  if (!loggedIn) {
-    res.render("admin_login")
   } else {
     res.redirect("home")
   }
@@ -264,7 +257,41 @@ app.post("/update_profile", async (req,res) =>{
         res.status(500).json({message: error.message});
     }
 });
+
+var adminloggedIn = false;
+var username;
+app.get("/admin_login", (req, res) => {
+    if (!adminloggedIn) {
+      res.render("admin_login")
+    } else {
+      res.redirect("admin_home")
+    }
+})
+
+app.post("/admin_login", async (req,res) =>{
+    try{
+        const AdminLogin = await admins.findOne({username: req.body.uname, password: req.body.password})
+        
+        if(AdminLogin != null){
+            adminloggedIn = true;
+            username = req.body.uname;
+            res.redirect("admin_home")
+        }else{
+            res.redirect("admin_login")
+        }
+    }
+    catch(error){
+        res.status(500).json({message: error.message});
+    }
+})
+
+app.get("/admin_home", (req, res) => {
+    if (!adminloggedIn) {
+      res.render("admin_login")
+    } else {
+      res.render("admin_home")
+    }
+})
 app.listen(5000,() => {
     console.log("Server started on port 5000");
 });
-

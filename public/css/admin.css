@@ -1,0 +1,47 @@
+body{
+    background: -webkit-linear-gradient(left, #474e4e, #9da19d);
+    font-family:'Montserrat', sans-serif;
+}
+.question-form{
+    width: 60%;
+    margin: auto;
+    border-radius: 10px;
+    background: rgb(189, 192, 201);
+    display: flex;
+    flex-direction: column;
+}
+
+.heading{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.heading h1{
+    margin: 0;
+}
+.heading h6{
+    margin-top: 10px;
+}
+
+.main-form{
+    margin-left: 20%;
+    position: relative;
+}
+
+.field{
+    color: black;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.field textarea{
+    width: 70%;
+    height: 20%;
+}
+.field label{
+    margin-bottom: 55px;
+}
+
+.btn{
+    margin-top: 30px;
+    height: 35px;
+    width: 80px;
+}

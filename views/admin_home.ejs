@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/admin.css">
+  <title>Admin Page</title>
+  <link rel="icon" href="/assets/favicon.ico">
+</head>
+<body>
+    <div class="question-form">
+        <div class="heading">
+            <h1>Add a Question</h1>
+            <h6 style="color: red;">All fields are required</h6>
+        </div>
+        <div class="main-form">
+            <form action="/add_question" method="post">
+                <div class="field">
+                    <label for="title">Title</label><br>
+                    <textarea name="title" id="title" rows=6 autocomplete="off"></textarea>
+                </div>
+                <div class="field">
+                    <label for="description">Description</label><br>
+                    <textarea name="description" id="description" rows=8 autocomplete="off"></textarea>
+                </div>
+                <div class="field">
+                    <label for="difficulty">Difficulty</label><br>
+                    <select name="difficulty" id="difficulty" size=3>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="testcase">Testcase 1</label><br>
+                    <textarea name="testcase[]" id="testcase" rows=6 autocomplete="off"></textarea>
+                </div>
+                <div class="field">
+                    <label for="testcase">Testcase 2</label><br>
+                    <textarea name="testcase[]" id="testcase" rows=6 autocomplete="off"></textarea>
+                </div>
+                <div class="field">
+                    <label for="testcase">Testcase 3</label><br>
+                    <textarea name="testcase[]" id="testcase" rows=6 autocomplete="off"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
