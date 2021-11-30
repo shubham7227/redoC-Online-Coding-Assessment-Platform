@@ -1,5 +1,5 @@
 body{
-    background: -webkit-linear-gradient(left, #474e4e, #9da19d);
+    background: -webkit-linear-gradient(left, #219721, #99ee99);
     font-family:'Montserrat', sans-serif;
 }
 .question-form{
@@ -9,19 +9,41 @@ body{
     background: rgb(189, 192, 201);
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
 }
 
 .heading{
     margin-top: 20px;
     margin-left: 50px;
 }
+
 .heading h1{
+    display: inline-block;
+    width: 78%;
     margin: 0;
 }
 .heading h6{
     margin-top: 10px;
+    color: red;
 }
 
+.logoutbtn{
+    background-color: rgb(100, 165, 218);
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.logoutbtn:hover{
+    background-color: rgb(220, 234, 245);
+    color: black;
+  }
 .main-form{
     margin-left: 20%;
     position: relative;
@@ -44,4 +66,13 @@ body{
     margin-top: 30px;
     height: 35px;
     width: 80px;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn:hover{
+    background-color: rgb(24, 55, 139);
+    color: white;
 }
