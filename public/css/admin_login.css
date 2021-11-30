@@ -96,3 +96,19 @@ a:hover {
 .bttn{
   text-decoration: none;
 }
+
+.alert{
+  position: relative;
+  float: right;
+  width: 30%;
+  height: 6%;
+  background-color: #f74242;
+  color: white;
+  border-radius: 20px;
+  margin-right: 110px;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 22px;
+  border: 3px solid black;
+}

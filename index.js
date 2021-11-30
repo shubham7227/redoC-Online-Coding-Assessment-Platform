@@ -36,14 +36,6 @@ app.get("/login", (req, res) => {
   }
 })
 
-app.get("/admin_login", (req, res) => {
-  if (!loggedIn) {
-    res.render("admin_login")
-  } else {
-    res.redirect("home")
-  }
-})
-
 app.get("/individual_login", (req, res) => {
   if (!loggedIn) {
     res.render("individual_login", { failure: false, message: "" })
@@ -143,18 +135,6 @@ app.get("/question", (req, res) => {
     })
   }
 })
-
-// app.get("/question/:qid", (req, res) => {
-//   const { qid } = req.params.qid
-//   if (loggedIn) {
-//     res.render("question")
-//   } else {
-//     res.render("individual_login", {
-//       failure: true,
-//       message: "Please, login to continue",
-//     })
-//   }
-// })
 
 app.get("/question/:qid", async (req, res) => {
   try {
@@ -327,7 +307,7 @@ var username
 
 app.get("/admin_login", (req, res) => {
   if (!adminloggedIn) {
-    res.render("admin_login")
+    res.render("admin_login",{failure: false, message: ""})
   } else {
     res.redirect("admin_home")
   }
@@ -345,7 +325,7 @@ app.post("/admin_login", async (req, res) => {
       username = req.body.uname
       res.redirect("admin_home")
     } else {
-      res.redirect("admin_login")
+      res.render("admin_login",{failure: true, message: "Username or Password incorrect"})
     }
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -354,7 +334,7 @@ app.post("/admin_login", async (req, res) => {
 
 app.get("/admin_home", (req, res) => {
   if (!adminloggedIn) {
-    res.render("admin_login")
+    res.render("admin_login",{failure: true, message: "Username or Password incorrect"})
   } else {
     res.render("admin_home")
   }
