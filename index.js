@@ -6,6 +6,7 @@ const user = require("./models/users")
 const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv")
 const app = express()
+const cors = require("cors")
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
@@ -13,6 +14,7 @@ app.use(express.static("public"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors())
 
 function errmsg(msg) {
   return { error: msg || "Something went wrong!" }
@@ -35,7 +37,7 @@ const authenticate = async (req, res, next) => {
       next()
     })
   } catch (e) {
-    res.redirect("/individual_login")
+    return res.redirect("/individual_login")
   }
 }
 
@@ -53,7 +55,7 @@ app.post("/individual_login", async (req, res) => {
           },
           process.env.JWT_SECRET
         )
-        res.status(200).send({ token })
+        res.send({ token })
       } else {
         res.render("individual_login", {
           failure: true,
@@ -76,7 +78,7 @@ app.post("/individual_signup", async (req, res) => {
   })
   try {
     await userAdd.save()
-    res.redirect("individual_login")
+    return res.redirect("individual_login")
   } catch (error) {
     res.render("individual_signup", {
       failure: true,
