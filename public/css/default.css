@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-body{
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+body {
   margin: 0px;
   padding: 0px;
   background-color: #232222;
-  font-family:'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
-::placeholder{
-  font-family: 'Montserrat', sans-serif;
+::placeholder {
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
 }
-.nav_bar ul{
+.nav_bar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -19,11 +19,11 @@ body{
   background-color: #3c3c3c;
 }
 
-.nav_bar li{
+.nav_bar li {
   float: left;
 }
 
-.nav_bar li a{
+.nav_bar li a {
   display: block;
   color: white;
   text-align: center;
@@ -32,25 +32,26 @@ body{
   font-size: 24px;
 }
 
-.nav_bar li a:hover{
+.nav_bar li a:hover {
   color: black;
   background-color: gray;
 }
-.logo li a{
+.logo li a {
   padding: 0;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0;
 }
-.nav_bar img{
+.nav_bar img {
   width: 117px;
   height: 55px;
 }
 
-footer{
+footer {
   font-size: 20px;
   margin: 10px auto;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   text-align: center;
   color:white;
   background-color: #3c3c3c;

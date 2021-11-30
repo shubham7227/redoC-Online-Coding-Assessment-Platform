@@ -1,23 +1,30 @@
-const mongoose = require('mongoose');
-var autoIncrement = require('mongoose-auto-increment')
+const mongoose = require("mongoose")
 
 const questions = new mongoose.Schema({
-    title:{
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    difficulty: {
-        type: String,
-        required: true
-    },
-    testcase: [String],
-    output: [String]
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  difficulty: {
+    type: String,
+    required: true,
+  },
+  _id: {
+    type: Number,
+    required: true,
+  },
+  testcase: {
+    type: String,
+    default: [],
+  },
+  output: {
+    type: String,
+    default: [],
+  },
 })
 
-autoIncrement.initialize(mongoose.connection);
-questions.plugin(autoIncrement.plugin, 'questions');
-module.exports = mongoose.model("questions", questions);
+module.exports = mongoose.model("questions", questions)
