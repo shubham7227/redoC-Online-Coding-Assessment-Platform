@@ -34,26 +34,40 @@
       </p>
       <br />
       <table class="support">
-        <form>
+        <form action="/contact" method="POST">
           <tr>
             <td>Name</td>
-            <td><input type="text" placeholder="Username...." /></td>
+            <td>
+              <input name="name" type="text" placeholder="Username...." />
+            </td>
           </tr>
           <tr>
             <td>Email</td>
-            <td><input type="email" placeholder="Email Address...." /></td>
+            <td>
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address...."
+              />
+            </td>
           </tr>
           <tr>
             <td>Subject</td>
-            <td><input type="text" /></td>
+            <td><input name="subject" type="text" /></td>
           </tr>
           <tr>
             <td>Message</td>
-            <td><textarea></textarea></td>
+            <td><textarea name="message"></textarea></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button class="btn" id="btn" type="submit">Send email</button>
+            </td>
           </tr>
         </form>
       </table>
-      <button class="btn" type="Button">Send email</button><br /><br /><br />
+
+      <br /><br /><br />
     </div>
     <footer>
       <p>

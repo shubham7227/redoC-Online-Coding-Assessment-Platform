@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt")
 const axios = require("axios")
 const questions = require("./models/questions")
 const admins = require("./models/admin")
+const feedback = require("./models/feedback")
 const { render } = require("ejs")
 const app = express()
 
@@ -166,6 +167,29 @@ app.get("/contact", (req, res) => {
       failure: true,
       message: "Please, login to continue",
     })
+  }
+})
+
+app.post("/contact", async (req, res) => {
+  try {
+    if (!loggedIn) {
+      res.render("individual_login", {
+        failure: true,
+        message: "Please, login to continue",
+      })
+      return
+    }
+
+    const feed = new feedback({
+      name: req.body.name,
+      subject: req.body.subject,
+      email: req.body.email,
+      message: req.body.message,
+    })
+    await feed.save()
+    res.redirect("contact")
+  } catch (e) {
+    res.json({ message: "Could not send the feedback!!" })
   }
 })
 
@@ -375,5 +399,5 @@ app.get("/leaderboard", async (req, res) => {
 })
 
 app.listen(5000, () => {
-    console.log("Server started on port 5000")
-});
+  console.log("Server started on port 5000")
+})
