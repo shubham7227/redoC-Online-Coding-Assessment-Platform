@@ -7,9 +7,12 @@
     <link rel="icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href = "css/individual_login.css">
-    <!-- <script src = "js/login.js"></script> -->
+    <script src = "js/login.js"></script>
 </head>
 <body>
+    <% if(failure) { %>
+        <div class="alert"><%= message %></div>
+    <% } %>
     <div>
     <form class="login-form" action="/individual_login" method="post">
         <h1>Individual Login</h1>
@@ -19,20 +22,15 @@
         </div>
 
         <div class="txtb">
-        <input name="password" type="password" placeholder="Password" id="password">
+            <input name="password" type="password" placeholder="Password" id="password">
         </div>
 
         <div class="show-password">
-        <input type="checkbox" id="password-checkbox" name="password-checkbox" value="invisible">
-        <label for="password-checkbox"> Show password</label><br>
+            <input type="checkbox" id="password-checkbox" name="password-checkbox" onclick="showpassword()" value="invisible">
+            <label for="password-checkbox"> Show password</label><br>
         </div>
         <center>
-            <div id="error"> 
-            <% if(failure) {%>
-                <span><%= message %></span>
-            <% } %>
-            </div>
-            <br><button type="login" onclick = "login();" class="btn">Login</button>
+            <button type="login" class="btn">Login</button>
         </center>
         <div class="bottom-txt">
             <div class="acc">Don't have an account? <a href="/individual_signup" class="bttn">Sign Up</a></div>
