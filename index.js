@@ -35,15 +35,6 @@ app.get("/login", (req, res) => {
   }
 })
 
-<<<<<<< HEAD
-app.get("/admin_login", (req, res) => {
-  if (!loggedIn) {
-    res.render("admin_login")
-  } else {
-    res.redirect("home")
-  }
-})
-
 app.get("/individual_login", (req, res) => {
   if (!loggedIn) {
     res.render("individual_login", { failure: false, message: "" })
@@ -51,15 +42,6 @@ app.get("/individual_login", (req, res) => {
     res.redirect("home")
   }
 })
-=======
-app.get("/individual_login", (req,res) => {
-    if(!loggedIn){
-        res.render("individual_login",{failure: false, message: ""});
-    }else{
-        res.redirect('home')
-    }
-});
->>>>>>> 44fa3fe928ba96d3d406c36d62558166ae0db7c1
 
 var email = ""
 app.post("/individual_login", async (req, res) => {
@@ -142,23 +124,29 @@ app.get("/home", (req, res) => {
   }
 })
 
-app.get("/question", (req, res) => {
-  if (loggedIn) {
-    res.render("question")
-  } else {
-    res.render("individual_login", {
-      failure: true,
-      message: "Please, login to continue",
-    })
-  }
+app.get("/question/:qid", (req, res) => {
+  const { qid } = req.params
+  res.render("question")
+  // if (loggedIn) {
+  //   res.render("question")
+  // } else {
+  //   res.render("individual_login", {
+  //     failure: true,
+  //     message: "Please, login to continue",
+  //   })
+  // }
 })
 
-app.get("/question.json", (req, res) => {
+app.get("/question.json/:qid", async (req, res) => {
   try {
-    const title = "Reverse a String"
-    const description = "Write a program to reverse the given input string"
-    const difficulty = "Easy"
-    res.json({ title, description, difficulty })
+    const { qid } = req.params
+    const question = await questions.findById(qid)
+    if (question != null) {
+      var title = question.title,
+        description = question.description,
+        difficulty = question.difficulty
+      res.json({ title, description, difficulty })
+    }
   } catch (e) {
     res.status(500)
   }
@@ -215,17 +203,17 @@ app.post("/run", async (req, res) => {
       })
     }
   } catch (e) {
-    res.status(500).send(errmsg(e))
+    res.status(500)
   }
 })
 
 app.post("/submit", async (req, res) => {
   try {
     var { question_id, code, language } = req.body
-    var query = { _id: question_id }
-    await Question.findOne(query, async (err, result) => {
-      var { question, testcase, output, _id } = result
-
+    const result = await questions.findById(question_id)
+    if (result != null) {
+      var testcase = result.testcase
+      var output = result.output
       var apiOutput = await axios({
         method: "POST",
         url: "https://codexweb.netlify.app/.netlify/functions/enforceCode",
@@ -235,32 +223,29 @@ app.post("/submit", async (req, res) => {
           input: testcase,
         },
       })
-      if (apiOutput.data.output.indexOf("Execution Timed Out!") !== -1) {
+      if (apiOutput.data.output.trim().indexOf("Execution Timed Out") !== -1) {
         res.send({
           status: 0,
           message: "Time Limit Exceeded",
         })
-      } else if (apiOutput.data.output.trim() == output) {
-        var query = { _id: email, question_id } // todo : get email id
-        await solved.findOne(query, function (err, result) {
-          if (!solved.completed) {
-            var score = Math.floor(points / 10)
-            //to do update rating
-          }
-          res.send({
-            status: 1,
-            message: "Success! Testcases Passed",
-          })
+      } else if (apiOutput.data.output.trim() === output) {
+        const data = await user.findById(email)
+        var solved = data.solved
+        solved.push(question_id)
+        await user.updateOne({ _id: email }, { solved })
+        res.send({
+          status: 1,
+          message: "Success! All Testcases Passed",
         })
       } else {
         res.send({
-          status: 0,
-          message: "Wrong Answer!!",
+          status: 2,
+          message: "Oops, Some Testcases Didnot Pass!!",
         })
       }
-    })
+    }
   } catch (e) {
-    res.status(500).send(errmsg(e))
+    res.status(500)
   }
 })
 
@@ -300,52 +285,49 @@ app.post("/update_profile", async (req, res) => {
     } else {
       res.redirect("update_profile")
     }
-<<<<<<< HEAD
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 })
-app.listen(5000, () => {
-  console.log("Server started on port 5000")
-})
-=======
-});
 
-var adminloggedIn = false;
-var username;
+var adminloggedIn = false
+var username
+
 app.get("/admin_login", (req, res) => {
-    if (!adminloggedIn) {
-      res.render("admin_login")
-    } else {
-      res.redirect("admin_home")
-    }
+  if (!adminloggedIn) {
+    res.render("admin_login")
+  } else {
+    res.redirect("admin_home")
+  }
 })
 
-app.post("/admin_login", async (req,res) =>{
-    try{
-        const AdminLogin = await admins.findOne({username: req.body.uname, password: req.body.password})
-        
-        if(AdminLogin != null){
-            adminloggedIn = true;
-            username = req.body.uname;
-            res.redirect("admin_home")
-        }else{
-            res.redirect("admin_login")
-        }
+app.post("/admin_login", async (req, res) => {
+  try {
+    const AdminLogin = await admins.findOne({
+      username: req.body.uname,
+      password: req.body.password,
+    })
+
+    if (AdminLogin != null) {
+      adminloggedIn = true
+      username = req.body.uname
+      res.redirect("admin_home")
+    } else {
+      res.redirect("admin_login")
     }
-    catch(error){
-        res.status(500).json({message: error.message});
-    }
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
 })
 
 app.get("/admin_home", (req, res) => {
-    if (!adminloggedIn) {
-      res.render("admin_login")
-    } else {
-      res.render("admin_home")
-    }
+  if (!adminloggedIn) {
+    res.render("admin_login")
+  } else {
+    res.render("admin_home")
+  }
 })
-app.listen(5000,() => {
-    console.log("Server started on port 5000");
-});
->>>>>>> 44fa3fe928ba96d3d406c36d62558166ae0db7c1
+
+app.listen(5000, () => {
+  console.log("Server started on port 5000")
+})
