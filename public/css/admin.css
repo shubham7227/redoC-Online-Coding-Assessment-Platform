@@ -6,11 +6,12 @@ body{
     width: 60%;
     margin: auto;
     border-radius: 10px;
-    background-color: #383434;
+    background-color: #3c3c3c;
     display: flex;
     flex-direction: column;
     margin-top: 40px;
     color: white;
+    margin-bottom: 30px;
 }
 
 .heading{
@@ -24,13 +25,13 @@ body{
     width: 78%;
     margin: 0;
 }
-.heading h4{
+.heading h6{
     margin-top: 10px;
-    color: red;
+    color: rgb(233, 128, 128);
 }
 
 .logoutbtn{
-    background-color:darkseagreen;
+    background-color:rgb(52, 40, 207);
     border-radius: 5px;
     color: white;
     text-decoration: none;
@@ -44,7 +45,6 @@ body{
 
 .logoutbtn:hover{
     background-color: rgb(24, 55, 139);
-    color: black;
   }
 .main-form{
     margin-left: 20%;
@@ -58,17 +58,31 @@ body{
     margin-top: 20px;
 }
 .field textarea{
+    background-color: #232222;
+    border-radius: 10px;
     width: 70%;
     height: 20%;
     font-size:large;
+    color: white;
 }
+
 .field label{
     margin-bottom: 55px;
 }
 
+.field select{
+    background-color: #232222;
+    color: white;
+}
+
+.field option{
+    background-color: #232222;
+    color: white;
+}
+
 .btn{
     margin-top: 30px;
-    background-color: darkseagreen;
+    background-color: rgb(52, 40, 207);
     color: white;
     height: 40px;
     width: 100px;
@@ -93,9 +107,23 @@ footer{
     left: 0; right: 0;
     text-align: center;
     color:white;
-    background-color:grey;
-    position: fixed;
+    background-color:#3c3c3c;
+    position: relative;
     bottom: 0;
     padding: 5px;
     margin-bottom: 0;
+  }
+  footer p{
+    width: 60%;
+    margin: auto;
+    margin-top: 30px;
+  }
+  
+  footer p.bottom{
+    margin-bottom: 30px;
+  }
+  footer ul{
+    margin: auto;
+    text-align: left;
+    width: 16%;
   }
