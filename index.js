@@ -35,7 +35,6 @@ app.get("/login", (req, res) => {
   }
 })
 
-<<<<<<< HEAD
 app.get("/admin_login", (req, res) => {
   if (!loggedIn) {
     res.render("admin_login")
@@ -44,8 +43,6 @@ app.get("/admin_login", (req, res) => {
   }
 })
 
-=======
->>>>>>> cc97431c42d05b74f3d80eb01d6f8a23e161a7ac
 app.get("/individual_login", (req, res) => {
   if (!loggedIn) {
     res.render("individual_login", { failure: false, message: "" })
@@ -176,9 +173,12 @@ app.get("/contact", (req, res) => {
 
 app.get("/problems", async (req, res) => {
   if (loggedIn) {
-    var questionList = await questions.find();
-    var solved = await user.findById(email, {solved: 1})
-    res.render("problems",{questionList: questionList, solved: solved.solved})
+    var questionList = await questions.find()
+    var solved = await user.findById(email, { solved: 1 })
+    res.render("problems", {
+      questionList: questionList,
+      solved: solved.solved,
+    })
   } else {
     res.render("individual_login", {
       failure: true,
@@ -189,7 +189,7 @@ app.get("/problems", async (req, res) => {
 
 app.get("/logout", (req, res) => {
   loggedIn = false
-  adminloggedIn = false;
+  adminloggedIn = false
   res.render("login")
 })
 
@@ -299,17 +299,10 @@ app.post("/update_profile", async (req, res) => {
     } else {
       res.redirect("update_profile")
     }
-<<<<<<< HEAD
-    } catch (error) {
-    res.status(500).json({ message: error.message })
-    }
-});
-=======
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 })
->>>>>>> cc97431c42d05b74f3d80eb01d6f8a23e161a7ac
 
 var adminloggedIn = false
 var username
@@ -353,42 +346,39 @@ app.listen(5000, () => {
   console.log("Server started on port 5000")
 })
 
-app.post("/add_question", async (req,res) => {
-    try{
-        var data = new questions({
-            title: req.body.title,
-            description: req.body.description,
-            difficulty: req.body.difficulty,
-            testcase: req.body.testcase,
-            output: req.body.output,
-        })
-        await data.save();
-        res.redirect("admin_home");
-    }
-    catch(error){
-        console.log(error);
-    }
+app.post("/add_question", async (req, res) => {
+  try {
+    var data = new questions({
+      title: req.body.title,
+      description: req.body.description,
+      difficulty: req.body.difficulty,
+      testcase: req.body.testcase,
+      output: req.body.output,
+    })
+    await data.save()
+    res.redirect("admin_home")
+  } catch (error) {
+    console.log(error)
+  }
 })
-app.listen(5000,() => {
-    console.log("Server started on port 5000");
-});
-<<<<<<< HEAD
+app.listen(5000, () => {
+  console.log("Server started on port 5000")
+})
 
-app.get("/leaderboard", async(req,res) => {
-    if(loggedIn){
-        try{
-            var result = await user.find({},{fname: 1, mname:1, lname:1, solved: 1}).sort({solved: -1});
-            res.render("leaderboard", {result: result});
-        }
-        catch(error){
-            console.log(error);
-        }
-    }else {
-        res.render("individual_login", {
-          failure: true,
-          message: "Please, login to continue",
-        })
+app.get("/leaderboard", async (req, res) => {
+  if (loggedIn) {
+    try {
+      var result = await user
+        .find({}, { fname: 1, mname: 1, lname: 1, solved: 1 })
+        .sort({ solved: -1 })
+      res.render("leaderboard", { result: result })
+    } catch (error) {
+      console.log(error)
     }
-}) 
-=======
->>>>>>> cc97431c42d05b74f3d80eb01d6f8a23e161a7ac
+  } else {
+    res.render("individual_login", {
+      failure: true,
+      message: "Please, login to continue",
+    })
+  }
+})
