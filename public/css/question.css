@@ -1,10 +1,10 @@
-.container{
+.container {
   margin: 0 4%;
   margin-bottom: 40px;
   color: white;
 }
 
-.editor-area{
+.editor-area {
   background-color: #ffffff10;
   margin: 1em 0.5em;
   padding: 0.5em;
@@ -13,42 +13,42 @@
   border-radius: 10px;
 }
 
-.lang{
+.lang {
   height: 30px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   padding: 5px;
-  background-color:#3c3c3c;
+  background-color: #3c3c3c;
   color: white;
   outline: none;
   border: none;
   border-radius: 5px 0 5px 0;
 }
 
-.editor-top{
+.editor-top {
   display: flex;
   justify-content: space-between;
   margin: 0.7em 20px;
 }
 
-.CodeMirror{
+.CodeMirror {
   font-size: 16px;
   border-radius: 5px;
   margin: 20px 20px;
 }
 
-.CodeMirror-scrollbar-filler{
+.CodeMirror-scrollbar-filler {
   background-color: #3c3c3c !important;
 }
 
 .CodeMirror-hscrollbar {
-    height: 0;
+  height: 0;
 }
 
 .CodeMirror-vscrollbar {
-    width: 0;
+  width: 0;
 }
 
-.editor-bottom{
+.editor-bottom {
   display: flex;
   justify-content: space-between;
   margin: 0.6em 20px;
@@ -57,16 +57,17 @@
   align-items: left;
 }
 
-.btn{
+.btn {
   display: flex;
   margin: 0 22px;
   justify-content: space-evenly;
   width: 13%;
 }
 
-.run, .submit{
+.run,
+.submit {
   font-size: 15px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   border: none;
   border-radius: 5px;
   padding: 8px;
@@ -75,18 +76,19 @@
   transition: 500ms;
 }
 
-.run:hover, .submit:hover{
+.run:hover,
+.submit:hover {
   color: white;
   cursor: pointer;
 }
 
-.editor-bottom > div > label{
+.editor-bottom > div > label {
   display: block;
-  margin: 0.5em  0;
+  margin: 0.5em 0;
 }
 
-.input-field, .output-field{
-
+.input-field,
+.output-field {
   height: 120px;
   color: white;
   font-size: 1.2em;
@@ -99,11 +101,10 @@
   resize: none;
 }
 
-#question{
+#question {
   margin: 2em 1em;
 }
 
-.question > p{
+.question > p {
   line-height: 1.2;
 }
-
