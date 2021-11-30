@@ -50,6 +50,7 @@ app.get("/individual_login", (req,res) => {
     }
 });
 
+var email = "";
 app.post("/individual_login", async (req,res) => {
     try{
         const UserLogin = await user.findById(req.body.email);
@@ -58,6 +59,7 @@ app.post("/individual_login", async (req,res) => {
         }else{
             if(await bcrypt.compare(req.body.password, UserLogin.password)){
                 loggedIn = true;
+                email = req.body.email;
                 res.redirect("home");
             }else{
                 res.render("individual_login",{failure: true, message: "Incorrect email or password"});
@@ -96,9 +98,10 @@ app.post("/individual_signup", async (req,res) => {
     }
 });
 
-app.get("/home", (req,res) => {
+app.get("/home", async (req,res) => {
     if(loggedIn){
-        res.render("home");
+        const result = await user.findById(email, {_id : 0, mname: 0, lname : 0, password: 0});
+        res.render("home",{name: result.fname});
     }else{
         res.render("individual_login",{failure: true, message: "Please, login to continue"});
     }
@@ -132,6 +135,42 @@ app.get("/logout", (req, res) =>{
     loggedIn = false;
     res.render("login");
 })
+
+app.get("/profile", async (req,res) =>{
+    if(loggedIn){
+        const result = await user.findById(email, {password: 0});
+        res.render("profile",{user: result})
+    }
+    else{
+        res.render("individual_login",{failure: true, message: "Please, login to continue"}); 
+    }
+})
+
+app.get("/update_profile", async (req,res) =>{
+    if(loggedIn){
+        const result = await user.findById(email, {password: 0});
+        res.render("update_profile",{user: result})
+    }
+    else{
+        res.render("individual_login",{failure: true, message: "Please, login to continue"}); 
+    }
+})
+
+app.post("/update_profile", async (req,res) =>{
+    try{
+        const UserLogin = await user.findById(email);
+        if(await bcrypt.compare(req.body.password, UserLogin.password)){
+            
+            await user.updateOne({_id: email},{fname: req.body.fname, mname: req.body.mname, lname: req.body.lname});
+            res.redirect("profile");
+        }else{
+            res.redirect("update_profile");
+        }
+    }
+    catch(error){
+        res.status(500).json({message: error.message});
+    }
+});
 app.listen(5000,() => {
     console.log("Server started on port 5000");
 });

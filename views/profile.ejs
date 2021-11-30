@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/default.css">
+  <title>Profile</title>
+  <link rel="icon" href="/assets/favicon.ico">
+</head>
+<body>
+  <div class="nav_bar">
+    <ul>
+      <div class="logo"><li><a href = "/home"><img src = "assets/logob.png"></a></li></div>
+      <li><a href = "/problems">Problems</a></li>
+      <li><a href = "#">Contest</a></li>
+      <li><a href = "/discuss">Discuss</a></li>
+      <li><a href = "/contact">Contact</a></li>
+      <li><a href = "#">Leaderboard</a></li>
+      <li style="float: right;"><a href = "/logout">Logout</a></li>
+      <li style="float: right;"><a href = "/profile"><%= user.fname %></a></li>
+    </ul>
+  </div>
+  <div class="main-content">
+        <div class="image">
+            <img src="/assets/user.png">
+        </div>
+        <div class="details">
+            <p>Name: <%= user.fname %> <%= user.mname %> <%= user.lname %></p>
+            <p>Email: <%= user._id %></p>
+        </div>
+        <div class="btn">
+            <a href="/update_profile">Update Profile</a>
+        </div>
+  </div>
+
+  <footer>
+    copyright &copy; 2021, Samit_Sulav_Bikalp_Rayyan
+  </footer>
+  </body>
+  </html>
