@@ -80,6 +80,13 @@ app.get("/home", async (req,res) => {
     }
 });
 
+app.get("/individual_signup", (req,res) => {
+    if(!loggedIn){
+        res.render("individual_signup",{failure: false, message: ""});
+    }else{
+        res.redirect('home')
+    }
+})
 app.post("/individual_signup", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
