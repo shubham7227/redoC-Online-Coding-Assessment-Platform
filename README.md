@@ -1,5 +1,5 @@
 ## redoC ##
----
+
 redoC is an online coding assessment platform built to help beginner programmers learn basics of programming and help take their leap in competitive programming.
 
 ### Authors ###
